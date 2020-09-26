@@ -31,8 +31,70 @@
   </head>
   <body>
     <header></header>
-    <h3>My first block</h3>
+<div class="container-fluid">
+    <div class="hotel-search">
+      <div id="findhotels">Find hotels in:</div>
+
+      <div id="locationField">
+        <input id="autocomplete" placeholder="Enter a city" type="text" />
+      </div>
+
+      <div id="controls">
+        <select id="country">
+          <option value="all">All</option>
+          <option value="au">Australia</option>
+          <option value="br">Brazil</option>
+          <option value="ca">Canada</option>
+          <option value="fr">France</option>
+          <option value="de">Germany</option>
+          <option value="ind">India</option>
+          <option value="mx">Mexico</option>
+          <option value="nz">New Zealand</option>
+          <option value="it">Italy</option>
+          <option value="za">South Africa</option>
+          <option value="es">Spain</option>
+          <option value="pt">Portugal</option>
+          <option value="us">U.S.A.</option>
+          <option value="uk" selected >United Kingdom</option>
+        </select>
+      </div>
+    </div>
+<br>
+</div>
+<div class="row">
+ <div class="form-group form-check check-boxes col-12">
+   <div class="col-6"> <input type="checkbox" class="form-check-input" id="accommodation-checkbox">
+    <label class="form-check-label" for="exampleCheck1">Accommodation</label></div>
+      <div class="col-6"><input type="checkbox" class="form-check-input" id="restaurants-checkbox">
+    <label class="form-check-label" for="exampleCheck1">Restaurants</label></div>
+          <div class="col-6"><input type="checkbox" class="form-check-input" id="attractions-checkbox">
+    <label class="form-check-label" for="exampleCheck1">Attractions</label></div>
+ </div>
+ </div>
+<div class="row" id="map-col">
+  <div class="col-8">
     <div id="map"></div>
+    </div>
+<div class="col-4">
+ <h1>Itinerary creator</h1>
+      <h3>Create entries</h3>
+      <form id="myForm">
+        <label for="entry">Entry</label>
+      <input id="entry" name="entry" type="text">
+      <label for="event-time">Select a time:</label>
+      <input id="time" name="event-time" type="time">
+      <button id="addToItinerary">Add entry</button>
+      </form>
+      <br>
+      <h3>My itinerary</h3>
+      <div id="actualItinerary">
+      <ul>
+        <li class="row"><div class="inner-div col-4 table-header">Time</div><div class="inner-div col-4 table-header">Activity</div>
+        </li>
+      </ul>
+      </div>
+      </div>
+</div>
     <footer></footer>
     <script src="assets/js/map.js"></script>
   </body>
