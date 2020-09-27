@@ -146,16 +146,124 @@ function onPlaceChanged() {
       if (place.geometry) {
     map.panTo(place.geometry.location);
     map.setZoom(15);
-    search();//This is where I need to add my search function for the check boxes
 }else{
     document.getElementById("autocomplete").placeholder = "Enter a city";
     }
 } 
 
-function search() {
-    const search = {
-        bounds: map.getBounds(),
-        types: ["lodging"],
+//Checks which option is checked and fires up the search function for that option
+$('#accommodation-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+ //If I want to show more than one option on the map at one time, will need an else statement
+    }
+});
+
+$('#restaurant-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+           }
+});
+
+$('#museum-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+           }
+});
+
+$('#art-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+           }
+});
+
+$('#attraction-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+           }
+});
+
+$('#entertainment-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+           }
+});
+
+$('#night_life-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+           }
+});
+
+$('#shopping-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+           }
+});
+
+$('#worship-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+           }
+});
+
+$('#spa-option').change(function(){
+    if($(this).is(':checked')) {
+        searchOptions();
+           }
+});
+
+function searchOptions() {
+  if ($('#accommodation-option').is(':checked')) {
+    var search = {
+    bounds: map.getBounds(),
+    types: ['lodging'],
+  } 
+  }else if (($('#restaurant-option').is(':checked'))){
+  var search = {
+    bounds: map.getBounds(),
+    types: ['restaurant'],
+  }
+}else if (($('#museum-option').is(':checked'))){
+  var search = {
+    bounds: map.getBounds(),
+    types: ['museum'],
+  }
+  }else if (($('#art-option').is(':checked'))){
+  var search = {
+    bounds: map.getBounds(),
+    types: ['art'],
+  }
+    }else if (($('#attraction-option').is(':checked'))){
+  var search = {
+    bounds: map.getBounds(),
+    types: ['tourist_attraction', 'zoo', 'aquarium'],
+  }
+      }else if (($('#entertainment-option').is(':checked'))){
+  var search = {
+    bounds: map.getBounds(),
+    types: ['casino', 'bowling_alley', 'amusement_park', 'movie_theater'],
+  }
+  }else if (($('#night_life-option').is(':checked'))){
+  var search = {
+    bounds: map.getBounds(),
+    types: ['night_club', 'bar'],
+  }
+}else if (($('#shopping-option').is(':checked'))){
+  var search = {
+    bounds: map.getBounds(),
+    types: ['shopping_mall', 'jewelry_store', 'home_goods_store', 'clothing_store', 'book_store', 'store', 'shoe_store'],
+  }
+  }else if (($('#worship-option').is(':checked'))){
+  var search = {
+    bounds: map.getBounds(),
+    types: ['church', 'mosque', 'hindu_temple', 'synagogue'],
+  }
+    }else if (($('#spa-option').is(':checked'))){
+  var search = {
+    bounds: map.getBounds(),
+    types: ['spa', 'beauty_salon', 'hair_care'],
+  } 
     };
     places.nearbySearch(search, (results, status, pagination) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -169,12 +277,14 @@ function search() {
           icon: markerIcon,
         }); 
         markers[i].placeResult = results[i];
+        //google.maps.event.addListener(markers[i], "click", showInfoBox);
         setTimeout(dropMarker(i), i * 100);
         addResult(results[i], i);
             }
         }
     });
 }
+
 
 function clearMarkers() {
     for (let i = 0; i < markers.length; i++) {
