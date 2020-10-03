@@ -95,6 +95,53 @@ table {
   margin: 4px;
 }
 
+//-------------------------Info Boxes
+
+/*
+#infobox-block {
+    display: none;
+}
+*/
+
+.iw-table-row {
+    height: 25px;
+    background-color: #009640;
+    border: 1px solid #cccccc;
+}
+
+.iw_title {
+  font-weight: bold;
+  text-align: right;
+  color: #fff;
+}
+
+.iw-icon {
+  text-align: right;
+  padding-right: 10px;
+}
+
+#resultsTable {
+    height: 0px;
+    width: 100%;
+    position: relative;
+}
+
+#listing {
+    position: relative;
+    width: 100%;
+    height: 470px;
+    overflow: auto;
+    left: 0;
+    top: 10px;
+    cursor: pointer;
+    overflow-x: hidden;
+    background-color: #6fbdbf;
+}
+
+#results {
+    width: 100%;
+}
+
 //-------------------------Itinerary
 
 #actualItinerary {

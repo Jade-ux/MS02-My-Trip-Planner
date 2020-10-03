@@ -17,117 +17,230 @@
       crossorigin="anonymous"
     ></script>
     <!--Hover stylesheet - remove if not using-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
+      type="text/css"
+    />
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-    	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous">
-	</script>
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbcTamNPI1Pe4MAqwMqq6JYO3z_zwwwuY&callback=initMap&libraries=places&v=weekly"
-	 defer>
-	</script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbcTamNPI1Pe4MAqwMqq6JYO3z_zwwwuY&callback=initMap&libraries=places&v=weekly"
+      defer
+    ></script>
     <title>
       Trip Planner
     </title>
   </head>
   <body>
     <header></header>
-<div class="container-fluid">
-    <div class="hotel-search">
-      <div id="findhotels">Find hotels in:</div>
+    <div class="container-fluid">
+      <div class="hotel-search">
+        <div id="findhotels">Find hotels in:</div>
 
-      <div id="locationField">
-        <input id="autocomplete" placeholder="Enter a city" type="text" />
+        <div id="locationField">
+          <input id="autocomplete" placeholder="Enter a city" type="text" />
+        </div>
+
+        <div id="controls">
+          <select id="country">
+            <option value="all">All</option>
+            <option value="au">Australia</option>
+            <option value="br">Brazil</option>
+            <option value="ca">Canada</option>
+            <option value="fr">France</option>
+            <option value="de">Germany</option>
+            <option value="ind">India</option>
+            <option value="mx">Mexico</option>
+            <option value="nz">New Zealand</option>
+            <option value="it">Italy</option>
+            <option value="za">South Africa</option>
+            <option value="es">Spain</option>
+            <option value="pt">Portugal</option>
+            <option value="us">U.S.A.</option>
+            <option value="uk" selected>United Kingdom</option>
+          </select>
+        </div>
       </div>
-
-      <div id="controls">
-        <select id="country">
-          <option value="all">All</option>
-          <option value="au">Australia</option>
-          <option value="br">Brazil</option>
-          <option value="ca">Canada</option>
-          <option value="fr">France</option>
-          <option value="de">Germany</option>
-          <option value="ind">India</option>
-          <option value="mx">Mexico</option>
-          <option value="nz">New Zealand</option>
-          <option value="it">Italy</option>
-          <option value="za">South Africa</option>
-          <option value="es">Spain</option>
-          <option value="pt">Portugal</option>
-          <option value="us">U.S.A.</option>
-          <option value="uk" selected >United Kingdom</option>
-        </select>
+      <br />
+    </div>
+    <!--Need to fix names of each radio button - says inlineRadio Options-->
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="accommodation-option"
+        value="accommodation"
+      />
+      <label class="form-check-label" for="accommodation">Accommodation</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="restaurant-option"
+        value="restaurants"
+      />
+      <label class="form-check-label" for="restaurants">Restaurants</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="museum-option"
+        value="museums"
+      />
+      <label class="form-check-label" for="inlineRadio3">Museums</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="art-option"
+        value="art"
+      />
+      <label class="form-check-label" for="inlineRadio4">Art galleries</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="attraction-option"
+        value="attraction"
+      />
+      <label class="form-check-label" for="inlineRadio5">Attractions</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="entertainment-option"
+        value="entertainment"
+      />
+      <label class="form-check-label" for="inlineRadio6">Entertainment</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="night_life-option"
+        value="entertainment"
+      />
+      <label class="form-check-label" for="inlineRadio7">Night life</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="shopping-option"
+        value="entertainment"
+      />
+      <label class="form-check-label" for="inlineRadio8">Shopping</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="worship-option"
+        value="entertainment"
+      />
+      <label class="form-check-label" for="inlineRadio9"
+        >Places of worship</label
+      >
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="spa-option"
+        value="entertainment"
+      />
+      <label class="form-check-label" for="inlineRadio10"
+        >Spas and salons</label
+      >
+    </div>
+    <!--Info boxes-->
+    <div style="display: none">
+      <div id="info-content">
+        <table>
+          <tr id="iw-url-row" class="iw_table_row">
+            <td id="iw-icon" class="iw_table_icon"></td>
+            <td id="iw-url"></td>
+          </tr>
+          <tr id="iw-address-row" class="iw_table_row">
+            <td class="iw_attribute_name">Address:</td>
+            <td id="iw-address"></td>
+          </tr>
+          <tr id="iw-phone-row" class="iw_table_row">
+            <td class="iw_attribute_name">Telephone:</td>
+            <td id="iw-phone"></td>
+          </tr>
+          <tr id="iw-rating-row" class="iw_table_row">
+            <td class="iw_attribute_name">Rating:</td>
+            <td id="iw-rating"></td>
+          </tr>
+          <tr id="iw-website-row" class="iw_table_row">
+            <td class="iw_attribute_name">Website:</td>
+            <td id="iw-website"></td>
+          </tr>
+        <tr id="add-button">
+        <td>
+        <button class="white-button">Add to itinerary</button>
+        </td>
+        </tr>
+        </table>
       </div>
     </div>
-<br>
-</div>
-<!--Need to fix names of each radio button - says inlineRadio Options-->
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="accommodation-option" value="accommodation">
-  <label class="form-check-label" for="accommodation">Accommodation</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="restaurant-option" value="restaurants">
-  <label class="form-check-label" for="restaurants">Restaurants</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="museum-option" value="museums">
-  <label class="form-check-label" for="inlineRadio3">Museums</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="art-option" value="art">
-  <label class="form-check-label" for="inlineRadio4">Art galleries</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="attraction-option" value="attraction">
-  <label class="form-check-label" for="inlineRadio5">Attractions</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="entertainment-option" value="entertainment">
-  <label class="form-check-label" for="inlineRadio6">Entertainment</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="night_life-option" value="entertainment">
-  <label class="form-check-label" for="inlineRadio7">Night life</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="shopping-option" value="entertainment">
-  <label class="form-check-label" for="inlineRadio8">Shopping</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="worship-option" value="entertainment">
-  <label class="form-check-label" for="inlineRadio9">Places of worship</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="spa-option" value="entertainment">
-  <label class="form-check-label" for="inlineRadio10">Spas and salons</label>
-</div>
-<div><p id="choose-options-below"></p></div>
-<div class="row" id="map-col">
-  <div class="col-8">
-    <div id="map"></div>
+    <div><p id="choose-options-below"></p></div>
+    <div class="row" id="map-col">
+      <div class="col-8">
+        <div id="map"></div>
+      </div>
+      <div class="col-4">
+        <h1>Itinerary creator</h1>
+        <h3>Create entries</h3>
+        <form id="myForm">
+          <label for="entry">Entry</label>
+          <input id="entry" name="entry" type="text" />
+          <label for="event-time">Select a time:</label>
+          <input id="time" name="event-time" type="time" />
+          <button id="addToItinerary">Add entry</button>
+        </form>
+        <br />
+        <h3>My itinerary</h3>
+        <div id="actualItinerary">
+          <ul>
+            <li class="row">
+              <div class="inner-div col-4 table-header">Time</div>
+              <div class="inner-div col-4 table-header">Activity</div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-<div class="col-4">
- <h1>Itinerary creator</h1>
-      <h3>Create entries</h3>
-      <form id="myForm">
-        <label for="entry">Entry</label>
-      <input id="entry" name="entry" type="text">
-      <label for="event-time">Select a time:</label>
-      <input id="time" name="event-time" type="time">
-      <button id="addToItinerary">Add entry</button>
-      </form>
-      <br>
-      <h3>My itinerary</h3>
-      <div id="actualItinerary">
-      <ul>
-        <li class="row"><div class="inner-div col-4 table-header">Time</div><div class="inner-div col-4 table-header">Activity</div>
-        </li>
-      </ul>
+
+     <div id="listing">
+      <div class="container" id="resultsTable">
+        <div class="row" id="results"></div>
       </div>
-      </div>
-</div>
+    </div>
     <footer></footer>
     <script src="assets/js/map.js"></script>
   </body>
-  </html>
+</html>

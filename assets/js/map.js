@@ -2,6 +2,7 @@
 
 let map;
 let places; 
+let infoWindow;
 let markers = []
 let autocomplete;
 const countryRestrict = {
@@ -122,7 +123,9 @@ function initMap() {
     zoomControl: true,
     streetViewControl: false,
   });
-    
+ infoWindow = new google.maps.InfoWindow({
+    content: document.getElementById("info-content"),
+  }); 
     //Create the autocomplete object and associate it with the 'cities' search box.
     //Restrict the search to the UK and place type to 'cities'.
   autocomplete = new google.maps.places.Autocomplete(
@@ -276,15 +279,15 @@ function searchOptions() {
           animation: google.maps.Animation.DROP,
           icon: markerIcon,
         }); 
+        //This opens an infobox about the place when an icon on the map is clicked
         markers[i].placeResult = results[i];
-        //google.maps.event.addListener(markers[i], "click", showInfoBox);
+        google.maps.event.addListener(markers[i], "click", showInfoWindow);
         setTimeout(dropMarker(i), i * 100);
         addResult(results[i], i);
             }
         }
     });
 }
-
 
 function clearMarkers() {
     for (let i = 0; i < markers.length; i++) {
@@ -323,9 +326,99 @@ function dropMarker(i) {
 }
 
 function addResult(result, i) {
-const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
+  const results = document.getElementById("results");
+  const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
   const markerIcon = MARKER_PATH + markerLetter + ".png";
-  const tr = document.createElement("tr");
+  const tr = document.createElement("div");
+  tr.style.backgroundColor = i % 2 === 0 ? "#6fbdbf" : "#c8f3f4";
+  tr.className = "col-3";
+    //The line below will hide the table but still allow the windows to pop up when clicked on 
+    //tr.style.visibility = "hidden";
+
+  tr.onclick = function () {
+    google.maps.event.trigger(markers[i], "click");
+  };
+
+  const iconTd = document.createElement("div");
+  const nameTd = document.createElement("div");
+  const icon = document.createElement("img");
+  icon.src = markerIcon;
+  icon.setAttribute("class", "placeIcon");
+  icon.setAttribute("className", "placeIcon");
+  const name = document.createTextNode(result.name);
+  iconTd.appendChild(icon);
+  nameTd.appendChild(name);
+  tr.appendChild(iconTd);
+  tr.appendChild(nameTd);
+  results.appendChild(tr);
+}
+
+function showInfoWindow() {
+  const marker = this;
+  places.getDetails(
+    {
+      placeId: marker.placeResult.place_id,
+    },
+    (place, status) => {
+      if (status !== google.maps.places.PlacesServiceStatus.OK) {
+        return;
+      }
+
+      infoWindow.open(map, marker);
+      buildIWContent(place);
+    }
+  );
+} // Load the place information into the HTML elements used by the info window.
+
+function buildIWContent(place) {
+  document.getElementById("iw-icon").innerHTML =
+    '<img class="hotelIcon" ' + 'src="' + place.icon + '"/>';
+  document.getElementById("iw-url").innerHTML =
+    '<b><a href="' + place.url + '">' + place.name + "</a></b>";
+  document.getElementById("iw-address").textContent = place.vicinity;
+
+  if (place.formatted_phone_number) {
+    document.getElementById("iw-phone-row").style.display = "";
+    document.getElementById("iw-phone").textContent =
+      place.formatted_phone_number;
+  } else {
+    document.getElementById("iw-phone-row").style.display = "none";
+  } // Assign a five-star rating to the hotel, using a black star ('&#10029;')
+  // to indicate the rating the hotel has earned, and a white star ('&#10025;')
+  // for the rating points not achieved.
+
+  if (place.rating) {
+    let ratingHtml = "";
+
+    for (let i = 0; i < 5; i++) {
+      if (place.rating < i + 0.5) {
+        ratingHtml += "&#10025;";
+      } else {
+        ratingHtml += "&#10029;";
+      }
+
+      document.getElementById("iw-rating-row").style.display = "";
+      document.getElementById("iw-rating").innerHTML = ratingHtml;
+    }
+  } else {
+    document.getElementById("iw-rating-row").style.display = "none";
+  } // The regexp isolates the first part of the URL (domain plus subdomain)
+  // to give a short URL for displaying in the info window.
+
+  if (place.website) {
+    let fullUrl = place.website;
+    let website = String(hostnameRegexp.exec(place.website));
+
+    if (!website) {
+      website = "http://" + place.website + "/";
+      fullUrl = website;
+    }
+
+    document.getElementById("iw-website-row").style.display = "";
+    document.getElementById("iw-website").textContent = website;
+  } else {
+    document.getElementById("iw-website-row").style.display = "none";
+  }
 }
 
 //Itinerary
