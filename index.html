@@ -215,11 +215,23 @@
             <td class="iw_attribute_name">Website:</td>
             <td id="iw-website"></td>
           </tr>
-        <tr id="add-button">
-        <td>
-        <button class="white-button">Add to itinerary</button>
-        </td>
-        </tr>
+</table>
+            <table>
+                      <tr><td><hr class="iw-hr"></td></tr>
+            <tr><td><h4>Add to itinerary</h4></td></tr>
+<tr><td>
+            <form id="myForm">
+          <label for="iw-date">Date:</label>
+          <input id="iw-date" name="event-time" type="date"/>
+          <tr><td>
+          <label for="event-time">Time:</label>
+          <input id="iw-time" name="event-time" type="time"/>
+          </td></tr>
+          <tr><td>
+          <button class="white-button" id="addToItinerary">Add entry</button>
+          </td></tr>
+        </form>
+</td></tr>
         </table>
       </div>
     </div>
@@ -231,21 +243,14 @@
       </div>
       <div class="col-4">
         <h2>Itinerary creator</h2>
-        <h3>Create entries</h3>
-        <form id="myForm">
-          <label for="entry">Entry</label>
-          <input id="entry" name="entry" type="text" />
-          <label for="event-time">Select a time:</label>
-          <input id="time" name="event-time" type="time" />
-          <button id="addToItinerary">Add entry</button>
-        </form>
         <br />
-        <h3>My itinerary</h3>
         <div id="actualItinerary">
           <ul>
             <li class="row">
-              <div class="inner-div col-4 table-header">Time</div>
-              <div class="inner-div col-4 table-header">Activity</div>
+              <div class="inner-div col-3 table-header">Date</div>
+              <div class="inner-div col-3 table-header">Time</div>
+              <div class="inner-div col-3 table-header">Activity</div>
+              <div class="inner-div col-3 table-header">Remove item</div>
             </li>
           </ul>
         </div>

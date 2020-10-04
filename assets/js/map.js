@@ -235,7 +235,7 @@ function searchOptions() {
   }else if (($('#art-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
-    types: ['art'],
+    types: ['art_gallery'],
   }
     }else if (($('#attraction-option').is(':checked'))){
   var search = {
@@ -270,7 +270,8 @@ function searchOptions() {
     };
     places.nearbySearch(search, (results, status, pagination) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-            clearMarkers();
+            clearResults(); //Clears the results on the table
+            clearMarkers(); //Creates markers for each place
             for(let i =0; i < results.length; i++) {
                 const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
                 const markerIcon = MARKER_PATH + markerLetter + ".png";
@@ -316,6 +317,7 @@ function setAutocompleteCountry() {
     map.setCenter(countries[country].center);
     map.setZoom(countries[country].zoom);
   }
+    clearResults();
     clearMarkers();
 }
 
@@ -339,8 +341,8 @@ function addResult(result, i) {
     google.maps.event.trigger(markers[i], "click");
   };
 
-  const resultsHeading = document.createElement("h2");
-  resultsHeading.innerHTML = "Listings";
+  //const resultsHeading = document.createElement("h2");
+  //resultsHeading.innerHTML = "Listings";
   const iconTd = document.createElement("div");
   const nameTd = document.createElement("div");
   nameTd.className = "listing-name-block";
@@ -357,6 +359,13 @@ function addResult(result, i) {
   tr.appendChild(nameTd);
   results.appendChild(tr);
 }
+
+function clearResults() {
+  const results = document.getElementById("results");
+  while (results.childNodes[0]) {
+    results.removeChild(results.childNodes[0]);
+  }
+} 
 
 function showInfoWindow() {
   const marker = this;
@@ -379,7 +388,7 @@ function buildIWContent(place) {
   document.getElementById("iw-icon").innerHTML =
     '<img class="hotelIcon" ' + 'src="' + place.icon + '"/>';
   document.getElementById("iw-url").innerHTML =
-    '<b><a href="' + place.url + '">' + place.name + "</a></b>";
+    '<b><a id="placeName" href="' + place.url + '">' + place.name + "</a></b>";
   document.getElementById("iw-address").textContent = place.vicinity;
 
   if (place.formatted_phone_number) {
@@ -429,22 +438,22 @@ function buildIWContent(place) {
 //Itinerary
 
 let myForm = document.getElementById("myForm");
-let entry = document.getElementById("entry");
-let time = document.getElementById("time")
+//let infoWindowContent = document.getElementById("iw-url").innerHTML;
+//let entry = infoWindowContent.getElementById("placeName").innerText;
+let entry = "My Event"
+let date = document.getElementById("iw-date");
+let time = document.getElementById("iw-time");
 
 let actualItinerary = document.getElementById("actualItinerary")
 
 myForm.addEventListener("submit", (e) =>{
   e.preventDefault()
-  createEntry(time.value, entry.value)
+  createEntry(date.value, time.value, entry)
 })
 
-function createEntry(x, z) {
-  let ourHTML = `<li class="row"><div class=" inner-div col-4">${x}&nbsp;</div><div class="col-4 inner-div">${z}</div><div class="col-4 inner-div"><button onclick="deleteItem(this)">Delete entry</button></div></li>`
+function createEntry(x, y, z) {
+  let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-3">${x}&nbsp;</div><div class=" inner-div col-3">${y}&nbsp;</div><div class="col-3 inner-div">${z}</div><button onclick="deleteItem(this)">Delete entry</button></li>`
   actualItinerary.insertAdjacentHTML("beforeend", ourHTML)
-  entry.value = "";
-  time.value = "";
-  entry.focus()
 }
 
 function deleteItem(object) {

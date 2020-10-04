@@ -38,6 +38,13 @@ h3 {
     font-size: 1.3rem;
 }
 
+h4 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
 .header-row {
 padding: 40px 30px 10px 40px;
 }
@@ -117,6 +124,15 @@ margin-bottom: -18px;
     min-width: 170px;
 }
 
+div.gm-style-iw.gm-style-iw-c {
+    background-color: #4cbdc5;
+    border-radius: 6px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+
 /*-----------------------Styles from Google----------------*/
 
 body {
@@ -162,7 +178,7 @@ table {
   margin: 4px;
 }
 
-//-------------------------Info Boxes
+/*-------------------------Info Boxes*/
 
 /*
 #infobox-block {
@@ -186,6 +202,33 @@ table {
   text-align: right;
   padding-right: 10px;
 }
+
+#myForm {
+    width: 100%;
+}
+
+.iw-hr {
+    border-color: #fff;
+    padding: 10x 5px 10px 5px;
+    width: 100%;
+}
+td.iw-attribute-name, td.iw-url, td.iw-address, td.iw-website, td.iw-phone {
+    color: #ffffff;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    padding: 0px 5px 2px 5px;
+}
+
+.white-button {
+    color: #009cbf;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    background-color: #fff;
+    padding: 10px;
+}
+
+/*----------------------------------------Results Table*/
 
 #resultsTable {
     height: 0px;
@@ -233,5 +276,10 @@ table {
 #starting-point {
   min-height: 30px;
   min-width: 30%;
+}
+
+.itinerary-list-item{
+   list-style: none; 
+   color: #fff;
 }
 
