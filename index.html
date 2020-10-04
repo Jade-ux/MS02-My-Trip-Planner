@@ -39,17 +39,21 @@
     </title>
   </head>
   <body>
-    <header></header>
-    <div class="container-fluid">
-      <div class="hotel-search">
-        <div id="findhotels">Find hotels in:</div>
-
-        <div id="locationField">
+    <header>
+    <div class ="container-fluid header-row">
+    <div><h1>Plan your trip</h1></div>
+    </div>
+    </header>
+    <div class="container-fluid" id="search-container">
+    <div class="row row-padded">
+      <div id="city-search">
+    <div id="enter-search" class="col-2"><h2>Set your destination</h2></div>
+        <div id="locationField" class="col-4">
           <input id="autocomplete" placeholder="Enter a city" type="text" />
         </div>
 
-        <div id="controls">
-          <select id="country">
+        <div id="controls" class="col-4">
+          <select id="country"  placeholder="Choose a country">
             <option value="all">All</option>
             <option value="au">Australia</option>
             <option value="br">Brazil</option>
@@ -68,9 +72,13 @@
           </select>
         </div>
       </div>
+      </div>
       <br />
-    </div>
+
     <!--Need to fix names of each radio button - says inlineRadio Options-->
+    <div class="row row-padded minus-margin-container" id="radio-row">
+    <div class="col-2"><h2>Choose activities</h2></div>
+    <div class="col-2">
     <div class="form-check form-check-inline">
       <input
         class="form-check-input"
@@ -91,6 +99,8 @@
       />
       <label class="form-check-label" for="restaurants">Restaurants</label>
     </div>
+    </div>
+    <div class="col-2">
     <div class="form-check form-check-inline">
       <input
         class="form-check-input"
@@ -111,6 +121,7 @@
       />
       <label class="form-check-label" for="inlineRadio4">Art galleries</label>
     </div>
+    </div><div class="col-2">
     <div class="form-check form-check-inline">
       <input
         class="form-check-input"
@@ -131,6 +142,8 @@
       />
       <label class="form-check-label" for="inlineRadio6">Entertainment</label>
     </div>
+    </div>
+    <div class="col-2">
     <div class="form-check form-check-inline">
       <input
         class="form-check-input"
@@ -151,6 +164,7 @@
       />
       <label class="form-check-label" for="inlineRadio8">Shopping</label>
     </div>
+    </div><div class="col-2">
     <div class="form-check form-check-inline">
       <input
         class="form-check-input"
@@ -172,8 +186,10 @@
         value="entertainment"
       />
       <label class="form-check-label" for="inlineRadio10"
-        >Spas and salons</label
-      >
+        >Spas and salons</label>
+    </div>
+    </div>
+    </div>
     </div>
     <!--Info boxes-->
     <div style="display: none">
@@ -208,12 +224,13 @@
       </div>
     </div>
     <div><p id="choose-options-below"></p></div>
-    <div class="row" id="map-col">
+    <div class="container-fluid">
+    <div class="row" id="map-row">
       <div class="col-8">
         <div id="map"></div>
       </div>
       <div class="col-4">
-        <h1>Itinerary creator</h1>
+        <h2>Itinerary creator</h2>
         <h3>Create entries</h3>
         <form id="myForm">
           <label for="entry">Entry</label>
@@ -234,9 +251,9 @@
         </div>
       </div>
     </div>
-
+</div>
      <div id="listing">
-      <div class="container" id="resultsTable">
+      <div class="container-fluid minus-margin-container" id="resultsTable">
         <div class="row" id="results"></div>
       </div>
     </div>

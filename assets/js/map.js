@@ -339,9 +339,14 @@ function addResult(result, i) {
     google.maps.event.trigger(markers[i], "click");
   };
 
+  const resultsHeading = document.createElement("h2");
+  resultsHeading.innerHTML = "Listings";
   const iconTd = document.createElement("div");
   const nameTd = document.createElement("div");
+  nameTd.className = "listing-name-block";
+  nameTd.style.color = i % 2 === 0 ? "#ffffff" : "#000000";
   const icon = document.createElement("img");
+  iconTd.className = "listing-icon-block";
   icon.src = markerIcon;
   icon.setAttribute("class", "placeIcon");
   icon.setAttribute("className", "placeIcon");
