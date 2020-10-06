@@ -3,7 +3,7 @@
 let map;
 let places; 
 let infoWindow;
-let markers = []
+let markers = [];
 let autocomplete;
 const countryRestrict = {
     country: "uk",
@@ -221,47 +221,47 @@ function searchOptions() {
     var search = {
     bounds: map.getBounds(),
     types: ['lodging'],
-  } 
+  }; 
   }else if (($('#restaurant-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
     types: ['restaurant'],
-  }
+  };
 }else if (($('#museum-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
     types: ['museum'],
-  }
+  };
   }else if (($('#art-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
     types: ['art_gallery'],
-  }
+  };
     }else if (($('#attraction-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
     types: ['tourist_attraction', 'zoo', 'aquarium'],
-  }
+  };
       }else if (($('#entertainment-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
     types: ['casino', 'bowling_alley', 'amusement_park', 'movie_theater'],
-  }
+  };
   }else if (($('#night_life-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
     types: ['night_club', 'bar'],
-  }
+  };
 }else if (($('#shopping-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
     types: ['shopping_mall', 'jewelry_store', 'home_goods_store', 'clothing_store', 'book_store', 'store', 'shoe_store'],
-  }
+  };
   }else if (($('#worship-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
     types: ['church', 'mosque', 'hindu_temple', 'synagogue'],
-  }
+  };
     }else if (($('#spa-option').is(':checked'))){
   var search = {
     bounds: map.getBounds(),
@@ -433,23 +433,49 @@ function buildIWContent(place) {
   } else {
     document.getElementById("iw-website-row").style.display = "none";
   }
-}
 
-//Itinerary
-
+//Builds itinerary content
 let myForm = document.getElementById("myForm");
-//let infoWindowContent = document.getElementById("iw-url").innerHTML;
-//let entry = infoWindowContent.getElementById("placeName").innerText;
-let entry = "My Event"
+let entry = document.getElementById("placeName");
 let date = document.getElementById("iw-date");
 let time = document.getElementById("iw-time");
 
-let actualItinerary = document.getElementById("actualItinerary")
+let actualItinerary = document.getElementById("actualItinerary");
 
 myForm.addEventListener("submit", (e) =>{
-  e.preventDefault()
-  createEntry(date.value, time.value, entry)
-})
+  e.preventDefault();
+  createEntry(date.value, time.value, entry.innerHTML);
+});
+
+function createEntry(x, y, z) {
+  let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-3">${x}&nbsp;</div><div class=" inner-div col-3">${y}&nbsp;</div><div class="col-3 inner-div">${z}</div><button onclick="deleteItem(this)">Delete entry</button></li>`
+  actualItinerary.insertAdjacentHTML("beforeend", ourHTML)
+  entry.value = "";
+  date.value = "";
+  time.value = "";
+};
+
+}
+
+
+function deleteItem(object) {
+  object.parentElement.remove();
+}
+//Itinerary
+
+/*
+let myForm = document.getElementById("myForm");
+let entry = document.getElementById("placeName");
+let date = document.getElementById("iw-date");
+let time = document.getElementById("iw-time");
+
+let actualItinerary = document.getElementById("actualItinerary");
+
+myForm.addEventListener("submit", (e) =>{
+  e.preventDefault();
+  createEntry(date.value, time.value, entry.innerHTML);
+  console.log(document.getElementById('placeName').value);
+});
 
 function createEntry(x, y, z) {
   let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-3">${x}&nbsp;</div><div class=" inner-div col-3">${y}&nbsp;</div><div class="col-3 inner-div">${z}</div><button onclick="deleteItem(this)">Delete entry</button></li>`
@@ -459,3 +485,5 @@ function createEntry(x, y, z) {
 function deleteItem(object) {
   object.parentElement.remove();
 }
+
+*/

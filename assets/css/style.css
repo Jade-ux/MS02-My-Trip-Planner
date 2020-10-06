@@ -269,8 +269,7 @@ td.iw-attribute-name, td.iw-url, td.iw-address, td.iw-website, td.iw-phone {
 }
 
 .table-header {
-  font-size: 14px;
-  font-weight: bold;
+  color: #fff;
 }
 
 #starting-point {
