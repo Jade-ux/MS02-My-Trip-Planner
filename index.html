@@ -50,7 +50,7 @@
         <div class="col-4 search-bar"><h2>Choose your activities</h2></div></div>
         <div class="row row-padded">
         <div id="controls" class="col-4 search-bar">
-          <select id="country"  placeholder="Choose a country">
+          <select id="country" class="search-boxes" placeholder="Choose a country">
             <option value="all">All</option>
             <option value="au">Australia</option>
             <option value="br">Brazil</option>
@@ -69,11 +69,11 @@
           </select>
         </div>
         <div id="locationField" class="col-4 search-bar">
-          <input id="autocomplete" placeholder="Enter a city" type="text" />
+          <input id="autocomplete" placeholder="Start typing a city name" class="search-boxes" type="text" />
         </div>
         <!--Activities search-->
-        <div class="col-4 search-bar"><select id="activity" onchange="searchActivity()">
-        <option value="default">Choose places to visit</option>
+        <div class="col-4 search-bar"><select class="search-boxes" id="activity" onchange="searchActivity()">
+        <option value="default">Places to visit</option>
         <option value="lodging">Accommodation</option>
         <option value="restaurant">Restaurants</option>
         <option value="museum">Museums</option>
@@ -135,10 +135,10 @@
     <div><p id="choose-options-below"></p></div>
     <div class="container-fluid no-top-margin-container">
     <div class="row" id="map-row">
-      <div class="col-8">
+      <div class="col-6">
         <div id="map"></div>
       </div>
-      <div class="col-4">
+      <div class="col-6">
         <h2>Itinerary creator</h2>
         <br />
         <div id="actualItinerary">
