@@ -154,120 +154,29 @@ function onPlaceChanged() {
     }
 } 
 
-//Checks which option is checked and fires up the search function for that option
-$('#accommodation-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
- //If I want to show more than one option on the map at one time, will need an else statement
-    }
-});
+//Activity options
+const activityMap = {
+    accommodation: ['lodging'], 
+    restaurant: ['restaurant'],
+    museum: ['museum'],
+    art_gallery: ['art_gallery'],
+    attraction: ['tourist_attraction', 'zoo', 'aquarium'],
+    entertainment: ['casino', 'bowling_alley', 'amusement_park', 'movie_theater'],
+    night_life: ['night_club', 'bar'],
+    shopping: ['shopping_mall', 'jewelry_store', 'home_goods_store', 'clothing_store', 'book_store', 'store', 'shoe_store'],
+    worship: ['church', 'mosque', 'hindu_temple', 'synagogue'],
+    spa: ['spa', 'beauty_salon', 'hair_care'],
+}
 
-$('#restaurant-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
-           }
-});
+function searchActivity() {
+    searchOptions($('#activity').val());
+}
 
-$('#museum-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
-           }
-});
-
-$('#art-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
-           }
-});
-
-$('#attraction-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
-           }
-});
-
-$('#entertainment-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
-           }
-});
-
-$('#night_life-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
-           }
-});
-
-$('#shopping-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
-           }
-});
-
-$('#worship-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
-           }
-});
-
-$('#spa-option').change(function(){
-    if($(this).is(':checked')) {
-        searchOptions();
-           }
-});
-
-function searchOptions() {
-  if ($('#accommodation-option').is(':checked')) {
+function searchOptions(activity) {
     var search = {
     bounds: map.getBounds(),
-    types: ['lodging'],
-  }; 
-  }else if (($('#restaurant-option').is(':checked'))){
-  var search = {
-    bounds: map.getBounds(),
-    types: ['restaurant'],
-  };
-}else if (($('#museum-option').is(':checked'))){
-  var search = {
-    bounds: map.getBounds(),
-    types: ['museum'],
-  };
-  }else if (($('#art-option').is(':checked'))){
-  var search = {
-    bounds: map.getBounds(),
-    types: ['art_gallery'],
-  };
-    }else if (($('#attraction-option').is(':checked'))){
-  var search = {
-    bounds: map.getBounds(),
-    types: ['tourist_attraction', 'zoo', 'aquarium'],
-  };
-      }else if (($('#entertainment-option').is(':checked'))){
-  var search = {
-    bounds: map.getBounds(),
-    types: ['casino', 'bowling_alley', 'amusement_park', 'movie_theater'],
-  };
-  }else if (($('#night_life-option').is(':checked'))){
-  var search = {
-    bounds: map.getBounds(),
-    types: ['night_club', 'bar'],
-  };
-}else if (($('#shopping-option').is(':checked'))){
-  var search = {
-    bounds: map.getBounds(),
-    types: ['shopping_mall', 'jewelry_store', 'home_goods_store', 'clothing_store', 'book_store', 'store', 'shoe_store'],
-  };
-  }else if (($('#worship-option').is(':checked'))){
-  var search = {
-    bounds: map.getBounds(),
-    types: ['church', 'mosque', 'hindu_temple', 'synagogue'],
-  };
-    }else if (($('#spa-option').is(':checked'))){
-  var search = {
-    bounds: map.getBounds(),
-    types: ['spa', 'beauty_salon', 'hair_care'],
+    types: activityMap[activity],
   } 
-    };
     places.nearbySearch(search, (results, status, pagination) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             clearResults(); //Clears the results on the table

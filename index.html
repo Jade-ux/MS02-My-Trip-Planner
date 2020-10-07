@@ -46,13 +46,10 @@
     </header>
     <div class="container-fluid" id="search-container">
     <div class="row row-padded">
-      <div id="city-search">
-    <div id="enter-search" class="col-2"><h2>Set your destination</h2></div>
-        <div id="locationField" class="col-4">
-          <input id="autocomplete" placeholder="Enter a city" type="text" />
-        </div>
-
-        <div id="controls" class="col-4">
+        <div class="col-8 search-bar"><h2>Set your destination</h2></div>
+        <div class="col-4 search-bar"><h2>Choose your activities</h2></div></div>
+        <div class="row row-padded">
+        <div id="controls" class="col-4 search-bar">
           <select id="country"  placeholder="Choose a country">
             <option value="all">All</option>
             <option value="au">Australia</option>
@@ -71,126 +68,26 @@
             <option value="uk" selected>United Kingdom</option>
           </select>
         </div>
+        <div id="locationField" class="col-4 search-bar">
+          <input id="autocomplete" placeholder="Enter a city" type="text" />
+        </div>
+        <!--Activities search-->
+        <div class="col-4 search-bar"><select id="activity" onchange="searchActivity()">
+        <option value="default">Choose places to visit</option>
+        <option value="lodging">Accommodation</option>
+        <option value="restaurant">Restaurants</option>
+        <option value="museum">Museums</option>
+        <option value="art_gallery">Art galleries</option>
+        <option value="attraction">Attractions</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="night_life">Night life</option>
+        <option value="shopping">Shopping</option>
+        <option value="worship">Places of worship</option>
+        <option value="spa">Spas and salons</option>
+        </select></div>
+        </div>
       </div>
-      </div>
-      <br />
-
-    <!--Need to fix names of each radio button - says inlineRadio Options-->
-    <div class="row row-padded minus-margin-container" id="radio-row">
-    <div class="col-2"><h2>Choose activities</h2></div>
-    <div class="col-2">
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="accommodation-option"
-        value="accommodation"
-      />
-      <label class="form-check-label" for="accommodation">Accommodation</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="restaurant-option"
-        value="restaurants"
-      />
-      <label class="form-check-label" for="restaurants">Restaurants</label>
-    </div>
-    </div>
-    <div class="col-2">
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="museum-option"
-        value="museums"
-      />
-      <label class="form-check-label" for="inlineRadio3">Museums</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="art-option"
-        value="art"
-      />
-      <label class="form-check-label" for="inlineRadio4">Art galleries</label>
-    </div>
-    </div><div class="col-2">
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="attraction-option"
-        value="attraction"
-      />
-      <label class="form-check-label" for="inlineRadio5">Attractions</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="entertainment-option"
-        value="entertainment"
-      />
-      <label class="form-check-label" for="inlineRadio6">Entertainment</label>
-    </div>
-    </div>
-    <div class="col-2">
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="night_life-option"
-        value="entertainment"
-      />
-      <label class="form-check-label" for="inlineRadio7">Night life</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="shopping-option"
-        value="entertainment"
-      />
-      <label class="form-check-label" for="inlineRadio8">Shopping</label>
-    </div>
-    </div><div class="col-2">
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="worship-option"
-        value="entertainment"
-      />
-      <label class="form-check-label" for="inlineRadio9"
-        >Places of worship</label
-      >
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="inlineRadioOptions"
-        id="spa-option"
-        value="entertainment"
-      />
-      <label class="form-check-label" for="inlineRadio10"
-        >Spas and salons</label>
-    </div>
-    </div>
-    </div>
-    </div>
+    
     <!--Info boxes-->
     <div style="display: none">
       <div id="info-content">
@@ -236,7 +133,7 @@
       </div>
     </div>
     <div><p id="choose-options-below"></p></div>
-    <div class="container-fluid">
+    <div class="container-fluid no-top-margin-container">
     <div class="row" id="map-row">
       <div class="col-8">
         <div id="map"></div>

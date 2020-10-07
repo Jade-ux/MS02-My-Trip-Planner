@@ -52,6 +52,11 @@ padding: 40px 30px 10px 40px;
 #search-container {
     background-color: #99d5e0;
     width: 100%;
+    padding-bottom: 25px;
+}
+
+.search-bar {
+    display: inline-block;
 }
 
 #city-search {
@@ -74,7 +79,11 @@ padding: 40px 30px 10px 40px;
 #map-row {
   height: 450px;
   padding: 25px 40px 25px 40px;
-    background-color: #4cbdc5;
+background-color: #4cbdc5;
+}
+
+.no-top-margin-container {
+    margin-top: -20px;
 }
 
 .row-padded {
