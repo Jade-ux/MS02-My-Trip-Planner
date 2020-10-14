@@ -119,7 +119,7 @@ function initMap() {
     zoom: countries["uk"].zoom,
     center: countries["uk"].center,
     mapTypeControl: false,
-    panControl: true,
+    panControl: false,
     zoomControl: true,
     streetViewControl: false,
   });
@@ -242,16 +242,11 @@ function addResult(result, i) {
   const markerIcon = MARKER_PATH + markerLetter + ".png";
   const tr = document.createElement("div");
   tr.style.backgroundColor = i % 2 === 0 ? "#6fbdbf" : "#c8f3f4";
-  tr.className = "col-3";
-    //The line below will hide the table but still allow the windows to pop up when clicked on 
-    //tr.style.visibility = "hidden";
-
+  tr.className = "col-lg-4 col-12";
   tr.onclick = function () {
     google.maps.event.trigger(markers[i], "click");
   };
 
-  //const resultsHeading = document.createElement("h2");
-  //resultsHeading.innerHTML = "Listings";
   const iconTd = document.createElement("div");
   const nameTd = document.createElement("div");
   nameTd.className = "listing-name-block";
@@ -325,74 +320,28 @@ function buildIWContent(place) {
     }
   } else {
     document.getElementById("iw-rating-row").style.display = "none";
-  } // The regexp isolates the first part of the URL (domain plus subdomain)
-  // to give a short URL for displaying in the info window.
-
-  if (place.website) {
-    let fullUrl = place.website;
-    let website = String(hostnameRegexp.exec(place.website));
-
-    if (!website) {
-      website = "http://" + place.website + "/";
-      fullUrl = website;
-    }
-
-    document.getElementById("iw-website-row").style.display = "";
-    document.getElementById("iw-website").textContent = website;
-  } else {
-    document.getElementById("iw-website-row").style.display = "none";
-  }
+  } 
 
 //Builds itinerary content
 let myForm = document.getElementById("myForm");
 let entry = document.getElementById("placeName");
 let date = document.getElementById("iw-date");
-let time = document.getElementById("iw-time");
 
 let actualItinerary = document.getElementById("actualItinerary");
 
 myForm.addEventListener("submit", (e) =>{
   e.preventDefault();
-  createEntry(date.value, time.value, entry.innerHTML);
+  createEntry(date.value, entry.innerHTML);
 });
 
-function createEntry(x, y, z) {
-  let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-3">${x}&nbsp;</div><div class=" inner-div col-3">${y}&nbsp;</div><div class="col-3 inner-div">${z}</div><button onclick="deleteItem(this)">Delete entry</button></li>`
+function createEntry(x, z) {
+  let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-4">${x}&nbsp;</div><div class="col-4 inner-div">${z}</div><button class="white-button" onclick="deleteItem(this)">Delete entry</button></li>`
   actualItinerary.insertAdjacentHTML("beforeend", ourHTML)
-  entry.value = "";
+  entry.innerHTML = "";
   date.value = "";
-  time.value = "";
 };
-
-}
-
-
-function deleteItem(object) {
-  object.parentElement.remove();
-}
-//Itinerary
-
-/*
-let myForm = document.getElementById("myForm");
-let entry = document.getElementById("placeName");
-let date = document.getElementById("iw-date");
-let time = document.getElementById("iw-time");
-
-let actualItinerary = document.getElementById("actualItinerary");
-
-myForm.addEventListener("submit", (e) =>{
-  e.preventDefault();
-  createEntry(date.value, time.value, entry.innerHTML);
-  console.log(document.getElementById('placeName').value);
-});
-
-function createEntry(x, y, z) {
-  let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-3">${x}&nbsp;</div><div class=" inner-div col-3">${y}&nbsp;</div><div class="col-3 inner-div">${z}</div><button onclick="deleteItem(this)">Delete entry</button></li>`
-  actualItinerary.insertAdjacentHTML("beforeend", ourHTML)
 }
 
 function deleteItem(object) {
   object.parentElement.remove();
 }
-
-*/

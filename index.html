@@ -16,12 +16,6 @@
       src="https://kit.fontawesome.com/3f3f9142b7.js"
       crossorigin="anonymous"
     ></script>
-    <!--Hover stylesheet - remove if not using-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
-      type="text/css"
-    />
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
@@ -40,126 +34,163 @@
   </head>
   <body>
     <header>
-    <div class ="container-fluid header-row">
-    <div><h1>Plan your trip</h1></div>
-    </div>
+      <div class="container-fluid header-row">
+        <div><h1>Plan your trip</h1></div>
+        <div class="subtitle">
+          <p>
+            Set your destination, choose places of interest and click on the
+            markers to view more information and add places to your itinenary
+          </p>
+        </div>
+      </div>
     </header>
     <div class="container-fluid" id="search-container">
-    <div class="row row-padded">
-        <div class="col-8 search-bar"><h2>Set your destination</h2></div>
-        <div class="col-4 search-bar"><h2>Choose your activities</h2></div></div>
-        <div class="row row-padded">
-        <div id="controls" class="col-4 search-bar">
-          <select id="country" class="search-boxes" placeholder="Choose a country">
-            <option value="all">All</option>
-            <option value="au">Australia</option>
-            <option value="br">Brazil</option>
-            <option value="ca">Canada</option>
-            <option value="fr">France</option>
-            <option value="de">Germany</option>
-            <option value="ind">India</option>
-            <option value="mx">Mexico</option>
-            <option value="nz">New Zealand</option>
-            <option value="it">Italy</option>
-            <option value="za">South Africa</option>
-            <option value="es">Spain</option>
-            <option value="pt">Portugal</option>
-            <option value="us">U.S.A.</option>
-            <option value="uk" selected>United Kingdom</option>
-          </select>
-        </div>
-        <div id="locationField" class="col-4 search-bar">
-          <input id="autocomplete" placeholder="Start typing a city name" class="search-boxes" type="text" />
+      <div class="row row-padded">
+        <div class="col-lg-6 col-12">
+          <div class="row">
+            <div class="col-12 search-bar"><h2>Set your destination</h2></div>
+            <div id="controls" class="col-lg-6 col-12 search-bar">
+              <select
+                id="country"
+                class="search-boxes"
+                placeholder="Choose a country"
+              >
+                <option value="all">All</option>
+                <option value="au">Australia</option>
+                <option value="br">Brazil</option>
+                <option value="ca">Canada</option>
+                <option value="fr">France</option>
+                <option value="de">Germany</option>
+                <option value="ind">India</option>
+                <option value="mx">Mexico</option>
+                <option value="nz">New Zealand</option>
+                <option value="it">Italy</option>
+                <option value="za">South Africa</option>
+                <option value="es">Spain</option>
+                <option value="pt">Portugal</option>
+                <option value="us">U.S.A.</option>
+                <option value="uk" selected>United Kingdom</option>
+              </select>
+            </div>
+            <div id="locationField" class="col-lg-6 col-12 search-bar">
+              <input
+                id="autocomplete"
+                placeholder="Start typing a city name"
+                class="search-boxes"
+                type="text"
+              />
+            </div>
+          </div>
         </div>
         <!--Activities search-->
-        <div class="col-4 search-bar"><select class="search-boxes" id="activity" onchange="searchActivity()">
-        <option value="default">Places to visit</option>
-        <option value="lodging">Accommodation</option>
-        <option value="restaurant">Restaurants</option>
-        <option value="museum">Museums</option>
-        <option value="art_gallery">Art galleries</option>
-        <option value="attraction">Attractions</option>
-        <option value="entertainment">Entertainment</option>
-        <option value="night_life">Night life</option>
-        <option value="shopping">Shopping</option>
-        <option value="worship">Places of worship</option>
-        <option value="spa">Spas and salons</option>
-        </select></div>
+        <div class="col-lg-6 col-12">
+          <div class="search-bar"><h2>Choose your activities</h2></div>
+          <div class="row">
+            <div class="col-12 search-bar">
+              <select
+                class="search-boxes"
+                id="activity"
+                onchange="searchActivity()"
+              >
+                <option value="default">Places to visit</option>
+                <option value="lodging">Accommodation</option>
+                <option value="restaurant">Restaurants</option>
+                <option value="museum">Museums</option>
+                <option value="art_gallery">Art galleries</option>
+                <option value="attraction">Attractions</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="night_life">Night life</option>
+                <option value="shopping">Shopping</option>
+                <option value="worship">Places of worship</option>
+                <option value="spa">Spas and salons</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
-    
+    </div>
+
     <!--Info boxes-->
-    <div style="display: none">
-      <div id="info-content">
-        <table>
-          <tr id="iw-url-row" class="iw_table_row">
-            <td id="iw-icon" class="iw_table_icon"></td>
-            <td id="iw-url"></td>
-          </tr>
-          <tr id="iw-address-row" class="iw_table_row">
-            <td class="iw_attribute_name">Address:</td>
-            <td id="iw-address"></td>
-          </tr>
-          <tr id="iw-phone-row" class="iw_table_row">
-            <td class="iw_attribute_name">Telephone:</td>
-            <td id="iw-phone"></td>
-          </tr>
-          <tr id="iw-rating-row" class="iw_table_row">
-            <td class="iw_attribute_name">Rating:</td>
-            <td id="iw-rating"></td>
-          </tr>
-          <tr id="iw-website-row" class="iw_table_row">
-            <td class="iw_attribute_name">Website:</td>
-            <td id="iw-website"></td>
-          </tr>
-</table>
-            <table>
-                      <tr><td><hr class="iw-hr"></td></tr>
-            <tr><td><h4>Add to itinerary</h4></td></tr>
-<tr><td>
-            <form id="myForm">
-          <label for="iw-date">Date:</label>
-          <input id="iw-date" name="event-time" type="date"/>
-          <tr><td>
-          <label for="event-time">Time:</label>
-          <input id="iw-time" name="event-time" type="time"/>
-          </td></tr>
-          <tr><td>
-          <button class="white-button" id="addToItinerary">Add entry</button>
-          </td></tr>
-        </form>
-</td></tr>
-        </table>
-      </div>
-    </div>
-    <div><p id="choose-options-below"></p></div>
-    <div class="container-fluid no-top-margin-container">
-    <div class="row" id="map-row">
-      <div class="col-6">
-        <div id="map"></div>
-      </div>
-      <div class="col-6">
-        <h2>Itinerary creator</h2>
-        <br />
-        <div id="actualItinerary">
-          <ul>
-            <li class="row">
-              <div class="inner-div col-3 table-header"><h3>Date</h3></div>
-              <div class="inner-div col-3 table-header"><h3>Time</h3></div>
-              <div class="inner-div col-3 table-header"><h3>Activity</h3></div>
-              <div class="inner-div col-3 table-header"><h3>Remove item</h3></div>
-            </li>
-          </ul>
+    <div style="display: none;">
+      <div id="info-content" class="container">
+        <div id="iw-url-row" class="iw_table_row row">
+          <div id="iw-icon" class="iw_table_icon col-4"></div>
+          <div id="iw-url" class="col-8"></div>
+        </div>
+        <div id="iw-address-row" class="iw_table_row row">
+          <div class="iw_attribute_name col-4">Address:</div>
+          <div id="iw-address" class="col-8"></div>
+        </div>
+        <div id="iw-phone-row" class="iw_table_row row">
+          <div class="iw_attribute_name col-4">Telephone:</div>
+          <div id="iw-phone" class="col-8"></div>
+        </div>
+        <div id="iw-rating-row" class="iw_table_row row">
+          <div class="iw_attribute_name col-4">Rating:</div>
+          <div id="iw-rating" class="col-8"></div>
+        </div>
+        <div class="row">
+          <div class="col-12"><hr class="iw-hr" /></div>
+        </div>
+        <div class="row">
+          <div class="col-12"><h4>Add to your itinerary</h4></div>
+        </div>
+        <div class="row">
+          <form id="myForm">
+            <div class="row">
+              <div class="col-4">
+                <label class="white-label" for="iw-date">Date:</label>
+              </div>
+              <div class="col-8">
+                <input id="iw-date" name="event-date" type="date" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <button class="white-button" id="addToItinerary">
+                  Add entry
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-</div>
-     <div id="listing">
+    <!--Map and itinerary row-->
+    <div class="container-fluid no-top-margin-container">
+      <div class="row" id="map-row">
+        <div class="col-lg-6 col-12">
+          <div id="map"></div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <h2>Itinerary creator</h2>
+          <br />
+          <div id="actualItinerary">
+            <ul>
+              <li class="row">
+                <div class="inner-div col-4 table-header"><h3>Date</h3></div>
+                <div class="inner-div col-4 table-header">
+                  <h3>Activity</h3>
+                </div>
+                <div class="inner-div col-4 table-header">
+                  <h3>Remove item</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="listing" class="row-padded">
       <div class="container-fluid minus-margin-container" id="resultsTable">
         <div class="row" id="results"></div>
       </div>
     </div>
-    <footer></footer>
+    <footer>
+      <div class="row" id="footer">
+        <div class="col-12">For educational purposes only</div>
+      </div>
+    </footer>
     <script src="assets/js/map.js"></script>
   </body>
 </html>
