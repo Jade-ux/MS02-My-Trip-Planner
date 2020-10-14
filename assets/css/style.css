@@ -6,8 +6,8 @@
 /*Stops website scrolling left and right on mobile, solution found here: https://www.weblimitless.com/stop-website-showing-white-space-right-side/*/
 html,
 body {
-    overflow-x: hidden; 
-    width: 100%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 * {
@@ -22,7 +22,7 @@ body {
 }
 
 #map {
-  height: 400px;
+  height: 100%;
   width: 100%;
   border-radius: 3px;
   margin-bottom: 30px;
@@ -116,7 +116,7 @@ h4 {
 }
 
 #map-row {
-  height: 450px;
+  height: 650px;
   padding: 25px 40px 25px 30px;
   background-color: #4cbdc5;
 }
@@ -130,7 +130,7 @@ h4 {
 }
 
 .sub-row-padded {
-    padding: 15px 15px 20px 15px;
+  padding: 15px 15px 20px 15px;
 }
 
 #listing {
@@ -232,11 +232,6 @@ table {
 
 /*-------------------------Info Boxes*/
 
-/*
-#infobox-block {
-    display: none;
-}
-*/
 #info-content {
   min-height: fit-content;
 }
@@ -277,7 +272,7 @@ div.gm-style-iw-d {
 
 .iw-hr {
   border-color: #fff;
-  padding: 10x 0px 10px 0px;
+  padding: 10px 0px 10px 0px;
   width: 100%;
 }
 
@@ -338,12 +333,11 @@ div#iw-rating {
   padding-right: 15px;
 }
 
-//-------------------------Itinerary
+/*-------------------------------------Itinerary*/
 
 #actualItinerary {
   min-height: 200px;
   min-width: 100%;
-  border: #000000 1px solid;
   list-style: none;
 }
 
@@ -367,8 +361,12 @@ div#iw-rating {
 }
 
 #footer {
-    background-color: #2b2a2a;
-    color: #fff;
-    text-align: center;
-    padding: 30px 30px 30px 30px;
+  background-color: #2b2a2a;
+  color: #fff;
+  padding: 30px 30px 30px 30px;
+  text-align: left;
+}
+
+#footer > div > a {
+  color: #fff;
 }

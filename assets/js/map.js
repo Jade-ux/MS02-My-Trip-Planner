@@ -1,18 +1,17 @@
 "use strict";
 
 let map;
-let places; 
+let places;
 let infoWindow;
 let markers = [];
 let autocomplete;
 const countryRestrict = {
-    country: "uk",
+  country: "uk",
 };
-
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
 const hostnameRegexp = new RegExp("^https?://.+?/");
-//List of countries for drop-down 
+//List of countries for drop-down
 const countries = {
   au: {
     center: {
@@ -113,7 +112,9 @@ const countries = {
     zoom: 5,
   },
 };
-
+/**
+ * Initialises the map
+ */
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: countries["uk"].zoom,
@@ -123,11 +124,11 @@ function initMap() {
     zoomControl: true,
     streetViewControl: false,
   });
- infoWindow = new google.maps.InfoWindow({
+  infoWindow = new google.maps.InfoWindow({
     content: document.getElementById("info-content"),
-  }); 
-    //Create the autocomplete object and associate it with the 'cities' search box.
-    //Restrict the search to the UK and place type to 'cities'.
+  });
+  //Create the autocomplete object and associate it with the 'cities' search box.
+  //Restrict the search to the UK and place type to 'cities'.
   autocomplete = new google.maps.places.Autocomplete(
     document.getElementById("autocomplete"),
     {
@@ -136,89 +137,107 @@ function initMap() {
     }
   );
   places = new google.maps.places.PlacesService(map);
-//Add an event listener to the country
-autocomplete.addListener("place_changed", onPlaceChanged);
-//Zoom the map to the chosen city
- document
+  //Add an event listener to the country
+  autocomplete.addListener("place_changed", onPlaceChanged);
+  //Zoom the map to the chosen city
+  document
     .getElementById("country")
     .addEventListener("change", setAutocompleteCountry);
 }
-
+/**
+ * Listens for place changing on user input
+ */
 function onPlaceChanged() {
-    const place = autocomplete.getPlace();
-      if (place.geometry) {
+  const place = autocomplete.getPlace();
+  if (place.geometry) {
     map.panTo(place.geometry.location);
     map.setZoom(15);
-}else{
+  } else {
     document.getElementById("autocomplete").placeholder = "Enter a city";
-    }
-} 
-
+  }
+}
 //Activity options
 const activityMap = {
-    accommodation: ['lodging'], 
-    restaurant: ['restaurant'],
-    museum: ['museum'],
-    art_gallery: ['art_gallery'],
-    attraction: ['tourist_attraction', 'zoo', 'aquarium'],
-    entertainment: ['casino', 'bowling_alley', 'amusement_park', 'movie_theater'],
-    night_life: ['night_club', 'bar'],
-    shopping: ['shopping_mall', 'jewelry_store', 'home_goods_store', 'clothing_store', 'book_store', 'store', 'shoe_store'],
-    worship: ['church', 'mosque', 'hindu_temple', 'synagogue'],
-    spa: ['spa', 'beauty_salon', 'hair_care'],
-}
-
+  accommodation: ["lodging"],
+  restaurant: ["restaurant"],
+  museum: ["museum"],
+  art_gallery: ["art_gallery"],
+  attraction: ["tourist_attraction", "zoo", "aquarium"],
+  entertainment: ["casino", "bowling_alley", "amusement_park", "movie_theater"],
+  night_life: ["night_club", "bar"],
+  shopping: [
+    "shopping_mall",
+    "jewelry_store",
+    "home_goods_store",
+    "clothing_store",
+    "book_store",
+    "store",
+    "shoe_store",
+  ],
+  worship: ["church", "mosque", "hindu_temple", "synagogue"],
+  spa: ["spa", "beauty_salon", "hair_care"],
+};
+/**
+ * Activated when search is changed on activity drop-down
+ */
 function searchActivity() {
-    searchOptions($('#activity').val());
+  searchOptions($("#activity").val());
 }
-
+/**
+ * Searches the options specified by the activity parameter
+ * @param {string} activity to be searched
+ */
 function searchOptions(activity) {
-    var search = {
+  var search = {
     bounds: map.getBounds(),
     types: activityMap[activity],
-  } 
-    places.nearbySearch(search, (results, status, pagination) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            clearResults(); //Clears the results on the table
-            clearMarkers(); //Creates markers for each place
-            for(let i =0; i < results.length; i++) {
-                const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
-                const markerIcon = MARKER_PATH + markerLetter + ".png";
-                        markers[i] = new google.maps.Marker({
+  };
+  places.nearbySearch(search, (results, status, pagination) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      clearResults();
+      clearMarkers();
+      for (let i = 0; i < results.length; i++) {
+        const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
+        const markerIcon = MARKER_PATH + markerLetter + ".png";
+        markers[i] = new google.maps.Marker({
           position: results[i].geometry.location,
           animation: google.maps.Animation.DROP,
           icon: markerIcon,
-        }); 
-        //This opens an infobox about the place when an icon on the map is clicked
+        });
+        //This opens an infobox when an icon on the map is clicked
         markers[i].placeResult = results[i];
         google.maps.event.addListener(markers[i], "click", showInfoWindow);
         setTimeout(dropMarker(i), i * 100);
         addResult(results[i], i);
-            }
-        }
-    });
-}
-
-function clearMarkers() {
-    for (let i = 0; i < markers.length; i++) {
-        if (markers[i]) {
-            markers[i].setMap(null);
-        }
+      }
     }
-    markers = [];
+  });
 }
-
+/**
+ * Clears the markers when a new type of activity is chosen
+ */
+function clearMarkers() {
+  for (let i = 0; i < markers.length; i++) {
+    if (markers[i]) {
+      markers[i].setMap(null);
+    }
+  }
+  markers = [];
+}
+/**
+ * Sets the country within which the autocomplete will search
+ */
 function setAutocompleteCountry() {
-    const country =document.getElementById("country").value;
-    if (country == "all") { 
-        autocomplete.setComponentRestrictions({
-            country: [],
-        });
-        map.setCenter({
-            lat: 15,
-            lng: 0,
-        });
-  map.setZoom(2);
+  const country = document.getElementById("country").value;
+  if (country == "all") {
+    autocomplete.setComponentRestrictions({
+      country: [],
+    });
+    map.setCenter({
+      lat: 15,
+      lng: 0,
+    });
+    map.setZoom(2);
   } else {
     autocomplete.setComponentRestrictions({
       country: country,
@@ -226,16 +245,23 @@ function setAutocompleteCountry() {
     map.setCenter(countries[country].center);
     map.setZoom(countries[country].zoom);
   }
-    clearResults();
-    clearMarkers();
+  clearResults();
+  clearMarkers();
 }
-
+/**
+ * Adds markers to the map for each place that equals the activity searched
+ * @param {number} i
+ */
 function dropMarker(i) {
   return function () {
     markers[i].setMap(map);
   };
 }
-
+/**
+ * Adds all results of the searched activity to the map and results table
+ * @param {object} result
+ * @param {number} i
+ */
 function addResult(result, i) {
   const results = document.getElementById("results");
   const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
@@ -246,7 +272,6 @@ function addResult(result, i) {
   tr.onclick = function () {
     google.maps.event.trigger(markers[i], "click");
   };
-
   const iconTd = document.createElement("div");
   const nameTd = document.createElement("div");
   nameTd.className = "listing-name-block";
@@ -263,14 +288,15 @@ function addResult(result, i) {
   tr.appendChild(nameTd);
   results.appendChild(tr);
 }
-
 function clearResults() {
   const results = document.getElementById("results");
   while (results.childNodes[0]) {
     results.removeChild(results.childNodes[0]);
   }
-} 
-
+}
+/**
+ * Creates an infowindow containing information about the place
+ */
 function showInfoWindow() {
   const marker = this;
   places.getDetails(
@@ -281,67 +307,56 @@ function showInfoWindow() {
       if (status !== google.maps.places.PlacesServiceStatus.OK) {
         return;
       }
-
       infoWindow.open(map, marker);
       buildIWContent(place);
     }
   );
 } // Load the place information into the HTML elements used by the info window.
-
 function buildIWContent(place) {
   document.getElementById("iw-icon").innerHTML =
     '<img class="hotelIcon" ' + 'src="' + place.icon + '"/>';
   document.getElementById("iw-url").innerHTML =
     '<b><a id="placeName" href="' + place.url + '">' + place.name + "</a></b>";
   document.getElementById("iw-address").textContent = place.vicinity;
-
   if (place.formatted_phone_number) {
     document.getElementById("iw-phone-row").style.display = "";
     document.getElementById("iw-phone").textContent =
       place.formatted_phone_number;
   } else {
     document.getElementById("iw-phone-row").style.display = "none";
-  } // Assign a five-star rating to the hotel, using a black star ('&#10029;')
-  // to indicate the rating the hotel has earned, and a white star ('&#10025;')
-  // for the rating points not achieved.
-
+  } // Assign ratings to places
   if (place.rating) {
     let ratingHtml = "";
-
     for (let i = 0; i < 5; i++) {
       if (place.rating < i + 0.5) {
         ratingHtml += "&#10025;";
       } else {
         ratingHtml += "&#10029;";
       }
-
       document.getElementById("iw-rating-row").style.display = "";
       document.getElementById("iw-rating").innerHTML = ratingHtml;
     }
   } else {
     document.getElementById("iw-rating-row").style.display = "none";
-  } 
-
-//Builds itinerary content
-let myForm = document.getElementById("myForm");
-let entry = document.getElementById("placeName");
-let date = document.getElementById("iw-date");
-
-let actualItinerary = document.getElementById("actualItinerary");
-
-myForm.addEventListener("submit", (e) =>{
-  e.preventDefault();
-  createEntry(date.value, entry.innerHTML);
-});
-
-function createEntry(x, z) {
-  let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-4">${x}&nbsp;</div><div class="col-4 inner-div">${z}</div><button class="white-button" onclick="deleteItem(this)">Delete entry</button></li>`
-  actualItinerary.insertAdjacentHTML("beforeend", ourHTML)
-  entry.innerHTML = "";
-  date.value = "";
-};
-}
-
-function deleteItem(object) {
-  object.parentElement.remove();
+  }
+  //Builds itinerary content
+  let myForm = document.getElementById("myForm");
+  let entry = document.getElementById("placeName");
+  let date = document.getElementById("iw-date");
+  let actualItinerary = document.getElementById("actualItinerary");
+  myForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    createEntry(date.value, entry.innerHTML);
+  });
+  /**
+   * Passes the data from the infowindow to the itinerary to create an entry
+   * @param {date-string} x date to be added
+   * @param {string} z name of venue to be added
+   */
+  function createEntry(x, z) {
+    let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-6">${x}&nbsp;</div><div class="col-6 inner-div">${z}</div></li>`;
+    actualItinerary.insertAdjacentHTML("beforeend", ourHTML);
+    entry.innerHTML = "";
+    date.value = "";
+  }
 }

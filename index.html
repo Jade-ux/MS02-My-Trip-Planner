@@ -2,32 +2,13 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/3f3f9142b7.js"
-      crossorigin="anonymous"
-    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+    <script src="https://kit.fontawesome.com/3f3f9142b7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbcTamNPI1Pe4MAqwMqq6JYO3z_zwwwuY&callback=initMap&libraries=places&v=weekly"
-      defer
-    ></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbcTamNPI1Pe4MAqwMqq6JYO3z_zwwwuY&callback=initMap&libraries=places&v=weekly" defer></script>
     <title>
       Trip Planner
     </title>
@@ -35,7 +16,7 @@
   <body>
     <header>
       <div class="container-fluid header-row">
-        <div><h1>Plan your trip</h1></div>
+        <div><h1 id="title">Plan your trip</h1></div>
         <div class="subtitle">
           <p>
             Set your destination, choose places of interest and click on the
@@ -50,11 +31,7 @@
           <div class="row">
             <div class="col-12 search-bar"><h2>Set your destination</h2></div>
             <div id="controls" class="col-lg-6 col-12 search-bar">
-              <select
-                id="country"
-                class="search-boxes"
-                placeholder="Choose a country"
-              >
+              <select id="country" class="search-boxes">
                 <option value="all">All</option>
                 <option value="au">Australia</option>
                 <option value="br">Brazil</option>
@@ -73,12 +50,7 @@
               </select>
             </div>
             <div id="locationField" class="col-lg-6 col-12 search-bar">
-              <input
-                id="autocomplete"
-                placeholder="Start typing a city name"
-                class="search-boxes"
-                type="text"
-              />
+              <input id="autocomplete" placeholder="Start typing a city name" class="search-boxes" type="text"/>
             </div>
           </div>
         </div>
@@ -87,11 +59,7 @@
           <div class="search-bar"><h2>Choose your activities</h2></div>
           <div class="row">
             <div class="col-12 search-bar">
-              <select
-                class="search-boxes"
-                id="activity"
-                onchange="searchActivity()"
-              >
+              <select class="search-boxes" id="activity" onchange="searchActivity()">
                 <option value="default">Places to visit</option>
                 <option value="lodging">Accommodation</option>
                 <option value="restaurant">Restaurants</option>
@@ -109,7 +77,6 @@
         </div>
       </div>
     </div>
-
     <!--Info boxes-->
     <div style="display: none;">
       <div id="info-content" class="container">
@@ -164,16 +131,13 @@
         </div>
         <div class="col-lg-6 col-12">
           <h2>Itinerary creator</h2>
-          <br />
+          <br/>
           <div id="actualItinerary">
             <ul>
               <li class="row">
-                <div class="inner-div col-4 table-header"><h3>Date</h3></div>
-                <div class="inner-div col-4 table-header">
+                <div class="inner-div col-6 table-header"><h3>Date</h3></div>
+                <div class="inner-div col-6 table-header">
                   <h3>Activity</h3>
-                </div>
-                <div class="inner-div col-4 table-header">
-                  <h3>Remove item</h3>
                 </div>
               </li>
             </ul>
@@ -188,7 +152,7 @@
     </div>
     <footer>
       <div class="row" id="footer">
-        <div class="col-12">For educational purposes only</div>
+      <div class="col-6"><a href="#title">Back to the top</a></div>
       </div>
     </footer>
     <script src="assets/js/map.js"></script>
