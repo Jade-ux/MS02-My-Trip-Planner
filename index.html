@@ -26,19 +26,19 @@
       </div>
     </header>
     <div class="container-fluid" id="search-container">
+    <form id="tripForm">
       <div class="row row-padded">
         <div class="col-lg-6 col-12">
           <div class="row">
             <div class="col-12 search-bar"><h2>Set your destination</h2></div>
             <div id="controls" class="col-lg-6 col-12 search-bar">
               <select id="country" class="search-boxes">
-                <option value="all">All</option>
+                <option value="all" selected>All</option>
                 <option value="au">Australia</option>
                 <option value="br">Brazil</option>
                 <option value="ca">Canada</option>
                 <option value="fr">France</option>
                 <option value="de">Germany</option>
-                <option value="ind">India</option>
                 <option value="mx">Mexico</option>
                 <option value="nz">New Zealand</option>
                 <option value="it">Italy</option>
@@ -46,16 +46,16 @@
                 <option value="es">Spain</option>
                 <option value="pt">Portugal</option>
                 <option value="us">U.S.A.</option>
-                <option value="uk" selected>United Kingdom</option>
+                <option value="uk">United Kingdom</option>
               </select>
             </div>
             <div id="locationField" class="col-lg-6 col-12 search-bar">
-              <input id="autocomplete" placeholder="Start typing a city name" class="search-boxes" type="text"/>
+              <input id="autocomplete" placeholder="Start typing a city name" class="search-boxes" type="text" oninput="isCountryChosen()" onchange="clearActivity()"/>
             </div>
           </div>
         </div>
         <!--Activities search-->
-        <div class="col-lg-6 col-12">
+        <div class="col-lg-4 col-12">
           <div class="search-bar"><h2>Choose your activities</h2></div>
           <div class="row">
             <div class="col-12 search-bar">
@@ -75,7 +75,13 @@
             </div>
           </div>
         </div>
+    <!--Reset button-->
+    <div class="col-lg-2 col-12">
+    <div>&nbsp;</div>
+    <button onclick="resetForm()" class="white-button">Reset</button>
+    </div>
       </div>
+      </form>
     </div>
     <!--Info boxes-->
     <div style="display: none;">

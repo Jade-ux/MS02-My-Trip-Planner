@@ -6,13 +6,20 @@ let infoWindow;
 let markers = [];
 let autocomplete;
 const countryRestrict = {
-  country: "uk",
+  country: "all",
 };
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
 const hostnameRegexp = new RegExp("^https?://.+?/");
 //List of countries for drop-down
 const countries = {
+  all: {
+    center: {
+      lat: 15,
+      lng: 0,
+    },
+    zoom: 2,
+  },
   au: {
     center: {
       lat: -25.3,
@@ -83,13 +90,6 @@ const countries = {
     },
     zoom: 5,
   },
-  ind: {
-    center: {
-      lat: -20.59,
-      lng: 78.96,
-    },
-    zoom: 6,
-  },
   pt: {
     center: {
       lat: 39.4,
@@ -117,8 +117,8 @@ const countries = {
  */
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    zoom: countries["uk"].zoom,
-    center: countries["uk"].center,
+    zoom: countries["all"].zoom,
+    center: countries["all"].center,
     mapTypeControl: false,
     panControl: false,
     zoomControl: true,
@@ -155,6 +155,8 @@ function onPlaceChanged() {
   } else {
     document.getElementById("autocomplete").placeholder = "Enter a city";
   }
+  var activityField = document.getElementById("activity");
+  activityField.focus();
 }
 //Activity options
 const activityMap = {
@@ -227,7 +229,7 @@ function clearMarkers() {
 /**
  * Sets the country within which the autocomplete will search
  */
-function setAutocompleteCountry() {
+function setAutocompleteCountry() { 
   const country = document.getElementById("country").value;
   if (country == "all") {
     autocomplete.setComponentRestrictions({
@@ -247,6 +249,24 @@ function setAutocompleteCountry() {
   }
   clearResults();
   clearMarkers();
+}
+
+//When new city is chosen this clears the activity from the drop-down and sets the default to 'Places to visit'
+function clearActivity(){
+    document.getElementById("activity").selectedIndex = "0";
+}
+//Resets all options when reset button is clicked.
+function resetForm(){
+    document.getElementById("tripForm").reset();
+}
+//If user is trying to search a city before choosing a country this alerts them to choose a country first
+function isCountryChosen(){
+        var countryField = document.getElementById("country");
+        if (countryField.value == 'all') {
+        alert("Please choose a country before searching for a city")
+        resetForm();
+        countryField.focus();
+    }
 }
 /**
  * Adds markers to the map for each place that equals the activity searched

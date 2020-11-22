@@ -1,6 +1,6 @@
 # Trip Planner
 
-[View my live site here.]( https://jade-ux.github.io/MS02-My-Trip-Planner/
+[View my live site here.](https://jade-ux.github.io/MS02-My-Trip-Planner/)
 
 ## Purpose
 
@@ -120,7 +120,7 @@ I tested my JavaScript code using [JS Hint](https://jshint.com/) and the result 
 
 This site is deployed on GitHub pages and I deployed it in the following way:
 
-1. Navigated to my repository on [GitHub here]( https://github.com/Jade-ux/MS02-My-Trip-Planner)
+1. Navigated to my repository on [GitHub here](https://github.com/Jade-ux/MS02-My-Trip-Planner)
 2. Clicked 'Settings'
 3. Scrolled down to the 'GitHub Pages' section 
 4. Under 'Source' I selected 'Master Branch' as that is the branch I want to show.
@@ -132,7 +132,7 @@ This site is deployed on GitHub pages and I deployed it in the following way:
 
 [Instructions taken from GitHub Help, you can find out more here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 
-1. Visit the main page of my repository on [GitHub here.](https://github.com/Jade-ux/Learn_English_In_South_Africa)
+1. Visit the main page of my repository on [GitHub here.](https://github.com/Jade-ux/MS02-My-Trip-Planner)
 2. Click 'Clone or download'
 3. Click the icon to the right of the URL. This will allow you to clone the repository using HTTPS.
 4. If you would like to clone if using SSH, click 'Use SSH'
