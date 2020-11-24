@@ -51,6 +51,11 @@ It was also previously possible to select an activity type without first typing 
 
 I have also added a focus function to the form functions to show the user which field she should be completing next.
 
+### Looping causing additional items to be added to the itinerary
+I came across a bug that was resulting in extra items being added to the itinerary when the 'Add to itinerary'button was clicked on the second time or any time after that. It looked like the action was causing the code to loop through the first item before running through the current item and then adding the code for the previous and current items to the itinerary.
+
+This was fixed by moving the function to add the itinerary item out of the buildIWContent() function.
+
 ### Reset
 
 In the previous version of the website there was no reset function. I have now added a button that will allow the user to reset the main form options. 

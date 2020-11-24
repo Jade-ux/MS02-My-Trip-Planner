@@ -376,24 +376,28 @@ function buildIWContent(place) {
     document.getElementById("iw-rating-row").style.display = "none";
   }
   //Builds itinerary content
+  /*
   let myForm = document.getElementById("myForm");
   let entry = document.getElementById("placeName");
   let date = document.getElementById("iw-date");
-  //let dateField = document.getElementById("iw-date")
   let actualItinerary = document.getElementById("actualItinerary");
+  */
 
+   };
 
 //Resets the 'Add to itinerary' form when someone opens a new infowindow
-//Not called anywhere
-/*
+
 function resetItineraryForm(){
     document.getElementById("myForm").reset();
 }
-*/
 
-  //Taken from here: https://jsbin.com/fawufajoke/edit?html,css,js,console,output
+  //Inspiration from: https://jsbin.com/fawufajoke/edit?html,css,js,console,output
 $('#addToItinerary').on('click',function(event){
   
+//Here I need to an if statement that will alert user if date field is left blank
+let entry = document.getElementById("placeName");
+let actualItinerary = document.getElementById("actualItinerary");
+
   event.preventDefault();
   
   let itineraryList = $.parseJSON($('#AllData').val());
@@ -412,8 +416,12 @@ $('#addToItinerary').on('click',function(event){
 
   let currentEventDate = newEvent.Date;
   let currentEventTitle = newEvent.Title;
+  //Here I need to add a delete button to enable user to delete the item
   let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div col-6">${currentEventDate}&nbsp;</div><div class="col-6 inner-div">${currentEventTitle}</div></li>`;
 actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
+
+$(entry).empty();
+resetItineraryForm()
 
    });
    //End
@@ -434,10 +442,6 @@ actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
     createEntry();
   });
 
-  function createEntry() {
-
-  } */
-
   //-----------------------------------------OLD Function.
   /**
    * Passes the data from the infowindow to the itinerary to create an entry
@@ -452,10 +456,4 @@ actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
     //date.value = "";
   }
     */
-  };
-
-
-
-   
-    //---------- End of code taken from jsbin
-    //Object constructor for the events that will be added to the itinerary
+ 
