@@ -195,46 +195,49 @@ const activityMap = {
  * Activated when search is changed on activity drop-down
  */
 function searchActivity() {
+     const place = autocomplete.getPlace();
   if (countryField.value == "all") {
     alert("Please choose a country and city before searching for an activity");
     resetForm();
-    // }else if (){
-    //alert("enter valid city1")
   } else if ($("#autocomplete").val() == "") {
     alert("Please enter a city");
-  } else {
+} else if (place.geometry == !true){
+    alert("city is not valid!")
+}else{
     searchOptions($("#activity").val());
-  }
+}
 }
 /**
  * Searches the options specified by the activity parameter
  * @param {string} activity to be searched
  */
 function searchOptions(activity) {
-  var search = {
-    bounds: map.getBounds(),
-    types: activityMap[activity],
-  };
-  places.nearbySearch(search, (results, status, pagination) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      clearResults();
-      clearMarkers();
-      for (let i = 0; i < results.length; i++) {
-        const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
-        const markerIcon = MARKER_PATH + markerLetter + ".png";
-        markers[i] = new google.maps.Marker({
-          position: results[i].geometry.location,
-          animation: google.maps.Animation.DROP,
-          icon: markerIcon,
-        });
-        //This opens an infobox when an icon on the map is clicked
-        markers[i].placeResult = results[i];
-        google.maps.event.addListener(markers[i], "click", showInfoWindow);
-        setTimeout(dropMarker(i), i * 100);
-        addResult(results[i], i);
+    var search = {
+      bounds: map.getBounds(),
+      types: activityMap[activity],
+    };
+    places.nearbySearch(search, (results, status, pagination) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        clearResults();
+        clearMarkers();
+        for (let i = 0; i < results.length; i++) {
+          const markerLetter = String.fromCharCode(
+            "A".charCodeAt(0) + (i % 26)
+          );
+          const markerIcon = MARKER_PATH + markerLetter + ".png";
+          markers[i] = new google.maps.Marker({
+            position: results[i].geometry.location,
+            animation: google.maps.Animation.DROP,
+            icon: markerIcon,
+          });
+          //This opens an infobox when an icon on the map is clicked
+          markers[i].placeResult = results[i];
+          google.maps.event.addListener(markers[i], "click", showInfoWindow);
+          setTimeout(dropMarker(i), i * 100);
+          addResult(results[i], i);
+        }
       }
-    }
-  });
+    });
 }
 /**
  * Clears the markers when a new type of activity is chosen
