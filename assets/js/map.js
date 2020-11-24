@@ -5,6 +5,8 @@ let places;
 let infoWindow;
 let markers = [];
 let autocomplete;
+let countryField = document.getElementById("country");
+let cityField = document.getElementById("autocomplete");
 const countryRestrict = {
   country: "all",
 };
@@ -112,6 +114,10 @@ const countries = {
     zoom: 5,
   },
 };
+//Focuses the country field when document loads
+$(document).ready(function() {
+    countryField.focus();
+});
 /**
  * Initialises the map
  */
@@ -153,10 +159,13 @@ function onPlaceChanged() {
     map.panTo(place.geometry.location);
     map.setZoom(15);
   } else {
-    document.getElementById("autocomplete").placeholder = "Enter a city";
+    cityField.placeholder = "Enter a city";
   }
-  var activityField = document.getElementById("activity");
+  let activityField = document.getElementById("activity");
   activityField.focus();
+}
+function focusCity(){
+    cityField.focus();
 }
 //Activity options
 const activityMap = {
@@ -183,7 +192,12 @@ const activityMap = {
  * Activated when search is changed on activity drop-down
  */
 function searchActivity() {
-  searchOptions($("#activity").val());
+    if (countryField.value == 'all') {
+        alert("Please choose a country before searching for an activity")
+        resetForm();
+    }else{
+        searchOptions($("#activity").val());
+    }
 }
 /**
  * Searches the options specified by the activity parameter
@@ -261,7 +275,6 @@ function resetForm(){
 }
 //If user is trying to search a city before choosing a country this alerts them to choose a country first
 function isCountryChosen(){
-        var countryField = document.getElementById("country");
         if (countryField.value == 'all') {
         alert("Please choose a country before searching for a city")
         resetForm();
@@ -314,6 +327,7 @@ function clearResults() {
     results.removeChild(results.childNodes[0]);
   }
 }
+
 /**
  * Creates an infowindow containing information about the place
  */
@@ -331,7 +345,9 @@ function showInfoWindow() {
       buildIWContent(place);
     }
   );
-} // Load the place information into the HTML elements used by the info window.
+} 
+
+// Load the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
   document.getElementById("iw-icon").innerHTML =
     '<img class="hotelIcon" ' + 'src="' + place.icon + '"/>';
@@ -363,20 +379,83 @@ function buildIWContent(place) {
   let myForm = document.getElementById("myForm");
   let entry = document.getElementById("placeName");
   let date = document.getElementById("iw-date");
+  //let dateField = document.getElementById("iw-date")
   let actualItinerary = document.getElementById("actualItinerary");
-  myForm.addEventListener("submit", (e) => {
+
+
+//Resets the 'Add to itinerary' form when someone opens a new infowindow
+//Not called anywhere
+/*
+function resetItineraryForm(){
+    document.getElementById("myForm").reset();
+}
+*/
+
+  //Taken from here: https://jsbin.com/fawufajoke/edit?html,css,js,console,output
+$('#addToItinerary').on('click',function(event){
+  
+  event.preventDefault();
+  
+  let itineraryList = $.parseJSON($('#AllData').val());
+  
+  let newEvent =  {
+    'Title': $(entry).html(), 
+    'Date': $('[name="event-date"]').val(),   
+  };
+  
+  itineraryList.push(newEvent);
+  
+  $('#AllData').val(JSON.stringify(itineraryList));
+  
+    console.log(itineraryList);
+  //Here I either need a for loop for each item in the array, or I need to appendChild to append the object text to the li and append the li to the ul each time I click 'Add to itinerary'
+
+  let currentEventDate = newEvent.Date;
+  let currentEventTitle = newEvent.Title;
+  let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div col-6">${currentEventDate}&nbsp;</div><div class="col-6 inner-div">${currentEventTitle}</div></li>`;
+actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
+
+   });
+   //End
+
+
+   
+//My object constructor that is not working:
+    /*function ItineraryEvent(entryDate, title){
+    this.eventDate = entryDate;
+    this.eventTitle = title;
+}
+    var newEvent = new ItineraryEvent(date, entry);
+    console.log(newEvent.eventTitle, newEvent.eventDate); */
+
+
+ /* myForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    createEntry(date.value, entry.innerHTML);
+    createEntry();
   });
+
+  function createEntry() {
+
+  } */
+
+  //-----------------------------------------OLD Function.
   /**
    * Passes the data from the infowindow to the itinerary to create an entry
    * @param {date-string} x date to be added
    * @param {string} z name of venue to be added
    */
-  function createEntry(x, z) {
+  /*function createEntry() {
+
     let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-6">${x}&nbsp;</div><div class="col-6 inner-div">${z}</div></li>`;
     actualItinerary.insertAdjacentHTML("beforeend", ourHTML);
-    entry.innerHTML = "";
-    date.value = "";
+    //entry.innerHTML = "";
+    //date.value = "";
   }
-}
+    */
+  };
+
+
+
+   
+    //---------- End of code taken from jsbin
+    //Object constructor for the events that will be added to the itinerary

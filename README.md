@@ -43,13 +43,17 @@ In future developments I would like to include a distance slider to allow users 
 
 ## Issues/challenges
 
-### Selecting activities without choosing city
+### Selecting only one out of three options on the main form
 
-It is possible to select an activity type without first typing in a city. When the user does this, the site will take the center of the chosen or default country as the center and will still add markers to the map. In future developments I would add a function to stop this and alert the user to choose a city before choosing activities.
+In the first version of the site a user could try to type in the city input field and was not alerted to choose a country first. I have now added functionality that will alert a user if she tries to enter a city without first choosing a country. 
+
+It was also previously possible to select an activity type without first typing in a starting point (country and city). I have now fixed this by adding functionality that will alert the user if she tries to choose an activity before first choosing a city. 
+
+I have also added a focus function to the form functions to show the user which field she should be completing next.
 
 ### Reset
 
-There is currently no reset button and the user would need to refresh the page to reset the search. This is not ideal and in future developments I would add a reset function that clears all results and clears the itinerary. 
+In the previous version of the website there was no reset function. I have now added a button that will allow the user to reset the main form options. 
 
 ### Itinerary
 

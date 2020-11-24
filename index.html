@@ -32,7 +32,7 @@
           <div class="row">
             <div class="col-12 search-bar"><h2>Set your destination</h2></div>
             <div id="controls" class="col-lg-6 col-12 search-bar">
-              <select id="country" class="search-boxes">
+              <select id="country" class="search-boxes" onchange="focusCity()">
                 <option value="all" selected>All</option>
                 <option value="au">Australia</option>
                 <option value="br">Brazil</option>
@@ -111,11 +111,12 @@
         <div class="row">
           <form id="myForm">
             <div class="row">
+              <input type="hidden" id="AllData" value="[]">
               <div class="col-4">
                 <label class="white-label" for="iw-date">Date:</label>
               </div>
               <div class="col-8">
-                <input id="iw-date" name="event-date" type="date" />
+                <input id="iw-date" name="event-date" type="date"/>
               </div>
             </div>
             <div class="row">
