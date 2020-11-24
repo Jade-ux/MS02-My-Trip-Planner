@@ -134,7 +134,7 @@ function initMap() {
     content: document.getElementById("info-content"),
   });
   //Create the autocomplete object and associate it with the 'cities' search box.
-  //Restrict the search to the UK and place type to 'cities'.
+  //Restrict the search to the country selected and place type to 'cities'.
   autocomplete = new google.maps.places.Autocomplete(
     document.getElementById("autocomplete"),
     {
@@ -150,6 +150,10 @@ function initMap() {
     .getElementById("country")
     .addEventListener("change", setAutocompleteCountry);
 }
+
+function focusCity() {
+  cityField.focus();
+}
 /**
  * Listens for place changing on user input
  */
@@ -159,14 +163,13 @@ function onPlaceChanged() {
     map.panTo(place.geometry.location);
     map.setZoom(15);
   } else {
-    cityField.placeholder = "Enter a city";
+    //cityField.placeholder = "Enter a city";
+    alert("enter city");
   }
   let activityField = document.getElementById("activity");
   activityField.focus();
 }
-function focusCity() {
-  cityField.focus();
-}
+
 //Activity options
 const activityMap = {
   accommodation: ["lodging"],
@@ -193,8 +196,12 @@ const activityMap = {
  */
 function searchActivity() {
   if (countryField.value == "all") {
-    alert("Please choose a country before searching for an activity");
+    alert("Please choose a country and city before searching for an activity");
     resetForm();
+    // }else if (){
+    //alert("enter valid city1")
+  } else if ($("#autocomplete").val() == "") {
+    alert("Please enter a city");
   } else {
     searchOptions($("#activity").val());
   }
@@ -349,7 +356,7 @@ function showInfoWindow() {
 
 // Load the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
-resetItineraryForm();
+  resetItineraryForm();
   document.getElementById("iw-icon").innerHTML =
     '<img class="hotelIcon" ' + 'src="' + place.icon + '"/>';
   document.getElementById("iw-url").innerHTML =
@@ -396,30 +403,32 @@ function resetItineraryForm() {
  * Creates an object when the 'Add to itinerary' button is clicked and adds the values of the object to the Itinerary in the DOM
  */
 $("#addToItinerary").on("click", function (event) {
-  //Here I need to an if statement that will alert user if date field is left blank
-  let entry = document.getElementById("placeName");
-  let actualItinerary = document.getElementById("actualItinerary");
-
   event.preventDefault();
+  //Checks to see if event date is empty and if it is, alerts the user. If not, adds the event to the itinerary.
+  if ($('[name="event-date"]').val() === "") {
+    alert("Please enter a date for your event");
+  } else {
+    let entry = document.getElementById("placeName");
+    let actualItinerary = document.getElementById("actualItinerary");
+    let itineraryList = $.parseJSON($("#AllData").val());
 
-  let itineraryList = $.parseJSON($("#AllData").val());
+    let newEvent = {
+      Title: $(entry).html(),
+      Date: $('[name="event-date"]').val(),
+    };
 
-  let newEvent = {
-    Title: $(entry).html(),
-    Date: $('[name="event-date"]').val(),
-  };
+    itineraryList.push(newEvent);
 
-  itineraryList.push(newEvent);
+    $("#AllData").val(JSON.stringify(itineraryList));
 
-  $("#AllData").val(JSON.stringify(itineraryList));
+    console.log(itineraryList);
 
-  console.log(itineraryList);
+    let currentEventDate = newEvent.Date;
+    let currentEventTitle = newEvent.Title;
+    //Here I need to add a delete button to enable user to delete the item
+    let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div col-6">${currentEventDate}&nbsp;</div><div class="col-6 inner-div">${currentEventTitle}</div></li>`;
+    actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
 
-  let currentEventDate = newEvent.Date;
-  let currentEventTitle = newEvent.Title;
-  //Here I need to add a delete button to enable user to delete the item
-  let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div col-6">${currentEventDate}&nbsp;</div><div class="col-6 inner-div">${currentEventTitle}</div></li>`;
-  actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
-
-  resetItineraryForm();
+    resetItineraryForm();
+  }
 });
