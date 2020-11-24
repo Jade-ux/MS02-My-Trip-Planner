@@ -115,8 +115,8 @@ const countries = {
   },
 };
 //Focuses the country field when document loads
-$(document).ready(function() {
-    countryField.focus();
+$(document).ready(function () {
+  countryField.focus();
 });
 /**
  * Initialises the map
@@ -164,8 +164,8 @@ function onPlaceChanged() {
   let activityField = document.getElementById("activity");
   activityField.focus();
 }
-function focusCity(){
-    cityField.focus();
+function focusCity() {
+  cityField.focus();
 }
 //Activity options
 const activityMap = {
@@ -192,12 +192,12 @@ const activityMap = {
  * Activated when search is changed on activity drop-down
  */
 function searchActivity() {
-    if (countryField.value == 'all') {
-        alert("Please choose a country before searching for an activity")
-        resetForm();
-    }else{
-        searchOptions($("#activity").val());
-    }
+  if (countryField.value == "all") {
+    alert("Please choose a country before searching for an activity");
+    resetForm();
+  } else {
+    searchOptions($("#activity").val());
+  }
 }
 /**
  * Searches the options specified by the activity parameter
@@ -243,7 +243,7 @@ function clearMarkers() {
 /**
  * Sets the country within which the autocomplete will search
  */
-function setAutocompleteCountry() { 
+function setAutocompleteCountry() {
   const country = document.getElementById("country").value;
   if (country == "all") {
     autocomplete.setComponentRestrictions({
@@ -266,20 +266,20 @@ function setAutocompleteCountry() {
 }
 
 //When new city is chosen this clears the activity from the drop-down and sets the default to 'Places to visit'
-function clearActivity(){
-    document.getElementById("activity").selectedIndex = "0";
+function clearActivity() {
+  document.getElementById("activity").selectedIndex = "0";
 }
 //Resets all options when reset button is clicked.
-function resetForm(){
-    document.getElementById("tripForm").reset();
+function resetForm() {
+  document.getElementById("tripForm").reset();
 }
 //If user is trying to search a city before choosing a country this alerts them to choose a country first
-function isCountryChosen(){
-        if (countryField.value == 'all') {
-        alert("Please choose a country before searching for a city")
-        resetForm();
-        countryField.focus();
-    }
+function isCountryChosen() {
+  if (countryField.value == "all") {
+    alert("Please choose a country before searching for a city");
+    resetForm();
+    countryField.focus();
+  }
 }
 /**
  * Adds markers to the map for each place that equals the activity searched
@@ -345,10 +345,11 @@ function showInfoWindow() {
       buildIWContent(place);
     }
   );
-} 
+}
 
 // Load the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
+resetItineraryForm();
   document.getElementById("iw-icon").innerHTML =
     '<img class="hotelIcon" ' + 'src="' + place.icon + '"/>';
   document.getElementById("iw-url").innerHTML =
@@ -382,78 +383,43 @@ function buildIWContent(place) {
   let date = document.getElementById("iw-date");
   let actualItinerary = document.getElementById("actualItinerary");
   */
-
-   };
+}
 
 //Resets the 'Add to itinerary' form when someone opens a new infowindow
 
-function resetItineraryForm(){
-    document.getElementById("myForm").reset();
+function resetItineraryForm() {
+  document.getElementById("myForm").reset();
 }
 
-  //Inspiration from: https://jsbin.com/fawufajoke/edit?html,css,js,console,output
-$('#addToItinerary').on('click',function(event){
-  
-//Here I need to an if statement that will alert user if date field is left blank
-let entry = document.getElementById("placeName");
-let actualItinerary = document.getElementById("actualItinerary");
+//Inspiration on creating an object from: https://jsbin.com/fawufajoke/edit?html,css,js,console,output
+/**
+ * Creates an object when the 'Add to itinerary' button is clicked and adds the values of the object to the Itinerary in the DOM
+ */
+$("#addToItinerary").on("click", function (event) {
+  //Here I need to an if statement that will alert user if date field is left blank
+  let entry = document.getElementById("placeName");
+  let actualItinerary = document.getElementById("actualItinerary");
 
   event.preventDefault();
-  
-  let itineraryList = $.parseJSON($('#AllData').val());
-  
-  let newEvent =  {
-    'Title': $(entry).html(), 
-    'Date': $('[name="event-date"]').val(),   
+
+  let itineraryList = $.parseJSON($("#AllData").val());
+
+  let newEvent = {
+    Title: $(entry).html(),
+    Date: $('[name="event-date"]').val(),
   };
-  
+
   itineraryList.push(newEvent);
-  
-  $('#AllData').val(JSON.stringify(itineraryList));
-  
-    console.log(itineraryList);
-  //Here I either need a for loop for each item in the array, or I need to appendChild to append the object text to the li and append the li to the ul each time I click 'Add to itinerary'
+
+  $("#AllData").val(JSON.stringify(itineraryList));
+
+  console.log(itineraryList);
 
   let currentEventDate = newEvent.Date;
   let currentEventTitle = newEvent.Title;
   //Here I need to add a delete button to enable user to delete the item
   let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div col-6">${currentEventDate}&nbsp;</div><div class="col-6 inner-div">${currentEventTitle}</div></li>`;
-actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
+  actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
 
-$(entry).empty();
-resetItineraryForm()
-
-   });
-   //End
-
-
-   
-//My object constructor that is not working:
-    /*function ItineraryEvent(entryDate, title){
-    this.eventDate = entryDate;
-    this.eventTitle = title;
-}
-    var newEvent = new ItineraryEvent(date, entry);
-    console.log(newEvent.eventTitle, newEvent.eventDate); */
-
-
- /* myForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    createEntry();
-  });
-
-  //-----------------------------------------OLD Function.
-  /**
-   * Passes the data from the infowindow to the itinerary to create an entry
-   * @param {date-string} x date to be added
-   * @param {string} z name of venue to be added
-   */
-  /*function createEntry() {
-
-    let ourHTML = `<li class="itinerary-list-item"><div class="inner-div col-6">${x}&nbsp;</div><div class="col-6 inner-div">${z}</div></li>`;
-    actualItinerary.insertAdjacentHTML("beforeend", ourHTML);
-    //entry.innerHTML = "";
-    //date.value = "";
-  }
-    */
- 
+  resetItineraryForm();
+});

@@ -60,6 +60,12 @@ This was fixed by moving the function to add the itinerary item out of the build
 
 In the previous version of the website there was no reset function. I have now added a button that will allow the user to reset the main form options. 
 
+I also found that in some browsers when the page was reloaded the form would not be reset, it would contain the data set before the page was reloaded. I have therefore added the resetForm() to the body element to be run when the page loads. The for is now reset with the page loads.
+
+The date on the Itinerary form was also not emptying when the page was refreshed, therefore I have added the resetItineraryForm() function to the buildIWContent() function to ensure the user sees a blank date field when they open the info window. 
+
+The resetItineraryForm() function is also added to the function that adds the object to the Itinerary, to clear the date field once a user has added an item to the itinerary.
+
 ### Itinerary
 
 The user can add the same entry to the itinerary twice. In future developments I would add a function that prevents this and alerts the user when he is trying to add an entry if he has already added it. 
