@@ -150,7 +150,9 @@ function initMap() {
     .getElementById("country")
     .addEventListener("change", setAutocompleteCountry);
 }
-
+/**
+ * Brings city field on form into focus
+ */
 function focusCity() {
   cityField.focus();
 }
@@ -169,7 +171,6 @@ function onPlaceChanged() {
   let activityField = document.getElementById("activity");
   activityField.focus();
 }
-
 //Activity options
 const activityMap = {
   accommodation: ["lodging"],
@@ -195,49 +196,48 @@ const activityMap = {
  * Activated when search is changed on activity drop-down
  */
 function searchActivity() {
-     const place = autocomplete.getPlace();
+  const place = autocomplete.getPlace();
   if (countryField.value == "all") {
     alert("Please choose a country and city before searching for an activity");
     resetForm();
   } else if ($("#autocomplete").val() == "") {
     alert("Please enter a city");
-} else if (place.geometry == !true){
-    alert("city is not valid!")
-}else{
+  } else if (place.geometry) {
     searchOptions($("#activity").val());
-}
+  } else {
+    ($("#noresult")).textContent = "No valid result found";
+    alert("city is not valid!");
+  }
 }
 /**
  * Searches the options specified by the activity parameter
  * @param {string} activity to be searched
  */
 function searchOptions(activity) {
-    var search = {
-      bounds: map.getBounds(),
-      types: activityMap[activity],
-    };
-    places.nearbySearch(search, (results, status, pagination) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        clearResults();
-        clearMarkers();
-        for (let i = 0; i < results.length; i++) {
-          const markerLetter = String.fromCharCode(
-            "A".charCodeAt(0) + (i % 26)
-          );
-          const markerIcon = MARKER_PATH + markerLetter + ".png";
-          markers[i] = new google.maps.Marker({
-            position: results[i].geometry.location,
-            animation: google.maps.Animation.DROP,
-            icon: markerIcon,
-          });
-          //This opens an infobox when an icon on the map is clicked
-          markers[i].placeResult = results[i];
-          google.maps.event.addListener(markers[i], "click", showInfoWindow);
-          setTimeout(dropMarker(i), i * 100);
-          addResult(results[i], i);
-        }
+  var search = {
+    bounds: map.getBounds(),
+    types: activityMap[activity],
+  };
+  places.nearbySearch(search, (results, status, pagination) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      clearResults();
+      clearMarkers();
+      for (let i = 0; i < results.length; i++) {
+        const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
+        const markerIcon = MARKER_PATH + markerLetter + ".png";
+        markers[i] = new google.maps.Marker({
+          position: results[i].geometry.location,
+          animation: google.maps.Animation.DROP,
+          icon: markerIcon,
+        });
+        //This opens an infobox when an icon on the map is clicked
+        markers[i].placeResult = results[i];
+        google.maps.event.addListener(markers[i], "click", showInfoWindow);
+        setTimeout(dropMarker(i), i * 100);
+        addResult(results[i], i);
       }
-    });
+    }
+  });
 }
 /**
  * Clears the markers when a new type of activity is chosen
@@ -274,7 +274,6 @@ function setAutocompleteCountry() {
   clearResults();
   clearMarkers();
 }
-
 //When new city is chosen this clears the activity from the drop-down and sets the default to 'Places to visit'
 function clearActivity() {
   document.getElementById("activity").selectedIndex = "0";
@@ -337,7 +336,6 @@ function clearResults() {
     results.removeChild(results.childNodes[0]);
   }
 }
-
 /**
  * Creates an infowindow containing information about the place
  */
@@ -356,7 +354,6 @@ function showInfoWindow() {
     }
   );
 }
-
 // Load the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
   resetItineraryForm();
@@ -386,21 +383,11 @@ function buildIWContent(place) {
   } else {
     document.getElementById("iw-rating-row").style.display = "none";
   }
-  //Builds itinerary content
-  /*
-  let myForm = document.getElementById("myForm");
-  let entry = document.getElementById("placeName");
-  let date = document.getElementById("iw-date");
-  let actualItinerary = document.getElementById("actualItinerary");
-  */
 }
-
 //Resets the 'Add to itinerary' form when someone opens a new infowindow
-
 function resetItineraryForm() {
   document.getElementById("myForm").reset();
 }
-
 //Inspiration on creating an object from: https://jsbin.com/fawufajoke/edit?html,css,js,console,output
 /**
  * Creates an object when the 'Add to itinerary' button is clicked and adds the values of the object to the Itinerary in the DOM
@@ -414,24 +401,21 @@ $("#addToItinerary").on("click", function (event) {
     let entry = document.getElementById("placeName");
     let actualItinerary = document.getElementById("actualItinerary");
     let itineraryList = $.parseJSON($("#AllData").val());
-
     let newEvent = {
       Title: $(entry).html(),
       Date: $('[name="event-date"]').val(),
     };
-
     itineraryList.push(newEvent);
-
     $("#AllData").val(JSON.stringify(itineraryList));
-
     console.log(itineraryList);
-
     let currentEventDate = newEvent.Date;
     let currentEventTitle = newEvent.Title;
     //Here I need to add a delete button to enable user to delete the item
-    let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div col-6">${currentEventDate}&nbsp;</div><div class="col-6 inner-div">${currentEventTitle}</div></li>`;
+    let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div col-4">${currentEventDate}&nbsp;</div><div class="col-4 inner-div">${currentEventTitle}</div><button class="white-button" onclick="deleteItem(this)">Delete entry</button></li>`;
     actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
-
     resetItineraryForm();
   }
 });
+function deleteItem(object) {
+  object.parentElement.remove();
+}

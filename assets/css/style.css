@@ -79,6 +79,12 @@ h4 {
   margin-left: 0px;
 }
 
+@media screen and (max-width: 767.98px) {
+  .search-bar {
+    margin-bottom: 0px;
+  }
+}
+
 #city-search {
   width: 100%;
   align-items: center;
@@ -183,6 +189,29 @@ div.gm-style-iw.gm-style-iw-c {
   font-weight: 300;
   font-size: 1rem;
   min-height: 280px;
+}
+
+/*-----------------------Buttons----------------*/
+
+.white-button {
+  color: #009cbf;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.reset-button {
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 767.98px) {
+  .reset-button {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
 }
 
 /*-----------------------Styles from Google----------------*/
@@ -296,16 +325,6 @@ div#iw-rating {
 
 .white-label {
   color: #fff;
-}
-
-.white-button {
-  color: #009cbf;
-  font-family: "Rubik", sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 3px;
 }
 
 /*----------------------------------------Results Table*/
