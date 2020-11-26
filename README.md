@@ -41,7 +41,7 @@ In future developments I would like to include a distance slider to allow users 
 
 **Responsive design:** I have used Bootstrap’s grid layout to break the design down for smaller screens, ensuring content will be visible and easy to navigate on desktop, mobile and screen sizes in between.
 
-## Issues/challenges
+## Issues/bugs
 
 ### Selecting only one out of three options on the main form
 
@@ -60,7 +60,7 @@ This was fixed by moving the function to add the itinerary item out of the build
 
 In the previous version of the website there was no reset function. I have now added a button that will allow the user to reset the main form options. 
 
-I also found that in some browsers when the page was reloaded the form would not be reset, it would contain the data set before the page was reloaded. I have therefore added the resetForm() to the body element to be run when the page loads. The for is now reset with the page loads.
+I also found that when using the browser Safari, when the page was reloaded the form would not be reset, it would contain the data set before the page was reloaded. I have therefore added the resetForm() to the body element to be run when the page loads. The for is now reset with the page loads.
 
 The date on the Itinerary form was also not emptying when the page was refreshed, therefore I have added the resetItineraryForm() function to the buildIWContent() function to ensure the user sees a blank date field when they open the info window. 
 
@@ -68,11 +68,15 @@ The resetItineraryForm() function is also added to the function that adds the ob
 
 ### Itinerary
 
-The user can add the same entry to the itinerary twice. In future developments I would add a function that prevents this and alerts the user when he is trying to add an entry if he has already added it. 
+The user can add the same entry to the itinerary twice. In future developments I would add a function that alerts the user when he is trying to add an entry if he has already added it.
 
-It is also possible to add an entry without a date. I would want to add functionality that stops a user from adding an entry without a date and alerts them to this. 
+### Google maps autocomplete - invalid data input
 
-There is currently an issue with how the data is cleared so that additional entries after the first one added have additional elements added. In future developments I would fix this by ensuring the object created is a new object each time.
+City input box: an autocomplete function sets the city bounds if a user selects a city within the country they have set. However, if a user enters invalid data, ie. text that is not equal to a city name within the country they have selected, the search for activities will not work. 
+
+[I have referred to Google documentation here](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch) to add the autocomplete with places search (on my site, this is activities). However, even in the Google documentation example it is possible for a user to enter invalid data without being alerted.
+
+I have tried to set an if statement based on the place.geometry argument, to alert the user if this is not true. However, this has not worked. This is an open bug but one that is open in the Google documentation example as well. 
 
 ## Features
 
@@ -108,9 +112,14 @@ I tested each user story by clicking through each step to make sure I could find
 **Testing functionality:**
 
 -	I ran manual tests on the functionality in this way:
--	Selecting a country and activity without selecting a city: the results were that the results would drop onto the map in the center of the country. In future developments I would force the user to select a city by alerting them when they try to search for activities without first selecting a city.
--	Choosing ‘All’ in the country field and then searching a city – this does allow the user to find any city in the world which is intentional.
--	 Adding items to the itinerary without a date – this is currently possible but in future development I would disable this so that the user would have to add a date and would be alerted if they try to add an entry without one.
+-	Selecting a country and then trying to select an activity without first choosing a city. An alert now pops up to let me know that I need to select a city before choosing activities.
+-	I began typing in the cities field without first choosing a country. An alert pops up to let me know I should select a country first before choosing a city.
+- I tried to choose an activity without first choosing a country and city. An alert pops up to let me know I should select a country and city before choosing an activity.
+- I entered data in the place & activities chooser form and then clicked the 'Reset' button and the form refreshed.
+- I entered data into the place & activities chooser form and then refreshed the browser. The form was cleared when the browser refreshed.
+-	 When adding items to the itinerary - I tried to add an item without a date. When I click 'Add to itinerary' if the date field is blank an alert pops up to let me know I should select a date.
+- I tried adding an event with a date and the event was added to the itinerary, at the bottom of the lisst of events.
+- I clicked the 'Delete' button to the right of the item and the entire item was removed from the itinerary section of the page.
 
 
 ### Links
