@@ -202,11 +202,10 @@ function searchActivity() {
     resetForm();
   } else if ($("#autocomplete").val() == "") {
     alert("Please enter a city");
-  } else if (place.geometry) {
-    searchOptions($("#activity").val());
+  } else if (place === undefined) {
+    alert("City is not valid, please select a valid city");
   } else {
-    ($("#noresult")).textContent = "No valid result found";
-    alert("city is not valid!");
+    searchOptions($("#activity").val());
   }
 }
 /**
