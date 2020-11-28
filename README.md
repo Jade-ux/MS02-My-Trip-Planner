@@ -51,6 +51,8 @@ It was also previously possible to select an activity type without first typing 
 
 I have also added a focus function to the form functions to show the user which field she should be completing next.
 
+- There was an issue that users may not see the results table and therefore not know it is there. I have added code to change the view once all fields in the form are set, if results are present, so that the user sees the map and top of the results table. [The idea was from here](http://jsfiddle.net/nick_craver/ntr5b/)
+
 ### Looping causing additional items to be added to the itinerary
 I came across a bug that was resulting in extra items being added to the itinerary when the 'Add to itinerary'button was clicked on the second time or any time after that. It looked like the action was causing the code to loop through the first item before running through the current item and then adding the code for the previous and current items to the itinerary.
 
@@ -124,9 +126,14 @@ I tested this in the following way:
 I tested this in the following way:
 
 2.1. I followed steps 1.1 to 1.6 above.
-2.2. I then choose a new country from the country select field. Expected result: the city field should clear and the map should pan and zoom to the new country. Actual result: The city field clears and the map pans and zooms to the new country I have set.
+2.2. I then choose a new country from the country select field. Expected result: the city field should clear, the map should pan and zoom to the new country, the activities select field should reset and the markers should be cleared from the map. Actual result: The city field clears, the map pans and zooms to the new country I have set, the activity field resets and the markers are cleared from the map.
 2.3. I type in the city field and choose a valid city from the autocomplete options shown. The map pans and zooms to the new city, as expected. 
 2.4. I choose my activity type. Expected result: map icons should drop onto map to show places with the activity types matching the activity type I chose, if places in my chosen activity type exist in the city I have chosen. Actual result: when places matching the activity type I have chosen exist in my chosen city map icons drop onto the map to show each one. When there are no places matching the activity type, an alert pops up informing me that there are no places to show and to pick another city.
+
+3. As a user who is looking for many different activity types I should be able to add items to my itinerary from many different activity types.
+3.1. I follow the steps 1.1 to 1.6 above.
+3.2. I then select a new activity from the activity field. Expected result: the markers from the previous activity choice should be cleared and markers for the new activity choice should appear on the map and results table. Actual result: markers from the previous activity are cleared and markers for the new activity type drop onto the map and populate the results table. Items in the itinerary do not clear which meets expectations as I want to add to the items already there.
+3.3. I now add items to the itinerary in the same way as step 1.4 above.
 
 
 **Testing functionality:**
@@ -140,6 +147,7 @@ I tested this in the following way:
 - I entered invalid data into the city field and then tried to chose an activity. An alert pops up to tell me that the city is invalid.
 - I enter a country, then choose a city, then go back to the country and choose a different country. The city field is then reset which is the expected output.
 - I choose a country, city and activities. Then I change the activities type. The map clears of all markers and new markers drop down for the new activity type.
+- Activities: If no results exist for the user's combination of country, city and activity, the user should be alerted to this so that they can choose again. I selected a country, city and activity where no results would exist eg. South Africa + Kruger Park + Spas and Salons. Expected result: user is alerted that there are no results. Actual result: alert pops up informing me that there are no activities of this type for my chosen city and that I should select again. I then close the alert and can choose from the activities select field again.
 -	 When adding items to the itinerary - I tried to add an item without a date. When I click 'Add to itinerary' if the date field is blank an alert pops up to let me know I should select a date.
 - I tried adding an event with a date and the event was added to the itinerary, at the bottom of the lisst of events.
 - I try adding items to the itinerary until the content overflows the block. A scrollbar then appears.

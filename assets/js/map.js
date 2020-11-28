@@ -219,6 +219,8 @@ function searchOptions(activity) {
   };
   places.nearbySearch(search, (results, status, pagination) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
+        //Changes the view to show the map and results table
+    window.location.hash = "map-row"
       clearResults();
       clearMarkers();
       for (let i = 0; i < results.length; i++) {
@@ -236,7 +238,7 @@ function searchOptions(activity) {
         addResult(results[i], i);
       }
     }else{
-        alert("There are no places to show, please choose another city")
+        alert("There are no places to show, please choose another activity city")
     }
   });
 }
@@ -282,10 +284,14 @@ function clearActivity() {
 //Resets all options when reset button is clicked.
 function resetForm() {
   document.getElementById("tripForm").reset();
+  window.location.hash = "title";
 }
 //If user is trying to search a city before choosing a country this alerts them to choose a country first
 function isCountryChosen() {
   if (countryField.value == "all") {
+    //If using this message instead of alert, add div with this ID under autocomplete, in same div container.
+    //let countryError = document.getElementById("country-error");
+    //countryError.innerHTML = "Please choose a country before searching for a city"
     alert("Please choose a country before searching for a city");
     resetForm();
     countryField.focus();
@@ -306,21 +312,25 @@ function dropMarker(i) {
  * @param {number} i
  */
 function addResult(result, i) {
+let resultsTitle = document.getElementById("results-title");
+resultsTitle.innerHTML = "Results"
   const results = document.getElementById("results");
   const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
   const markerIcon = MARKER_PATH + markerLetter + ".png";
+  const row = document.createElement("div");
+  row.className = "row";
   const tr = document.createElement("div");
   tr.style.backgroundColor = i % 2 === 0 ? "#6fbdbf" : "#c8f3f4";
-  tr.className = "col-lg-4 col-12";
+  tr.className = "col-lg-4 col-12 result-tr";
   tr.onclick = function () {
     google.maps.event.trigger(markers[i], "click");
   };
   const iconTd = document.createElement("div");
   const nameTd = document.createElement("div");
-  nameTd.className = "listing-name-block";
+  nameTd.className = "col-10 listing-name-block";
   nameTd.style.color = i % 2 === 0 ? "#ffffff" : "#000000";
   const icon = document.createElement("img");
-  iconTd.className = "listing-icon-block";
+  iconTd.className = "col-2 listing-icon-block";
   icon.src = markerIcon;
   icon.setAttribute("class", "placeIcon");
   icon.setAttribute("className", "placeIcon");

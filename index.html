@@ -116,7 +116,7 @@
         <div class="row">
           <form id="myForm">
             <div class="row">
-            <!--This is the array for itinerary items-->
+            <!--Array for itinerary items-->
               <input type="hidden" id="AllData" value="[]">
               <div class="col-4">
                 <label class="white-label" for="iw-date">Date:</label>
@@ -139,10 +139,10 @@
     <!--Map and itinerary row-->
     <div class="container-fluid no-top-margin-container">
       <div class="row" id="map-row">
-        <div class="col-lg-6 col-12">
+        <div class="col-lg-6 col-md-12 col-12">
           <div id="map"></div>
         </div>
-        <div class="col-lg-6 col-12 col-overflow">
+        <div class="col-lg-6 col-md-12 col-12">
           <h2>Itinerary creator</h2>
           <br/>
                           <div class="inner-div col-3 table-header"><h3>Date</h3></div>
@@ -159,11 +159,16 @@
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    <div class="container-fluid no-top-margin-container">
+    <div class="row">
     <div id="listing" class="row-padded">
       <div class="container-fluid minus-margin-container" id="resultsTable">
+              <div><h2 id="results-title"></h2></div>
         <div class="row" id="results"></div>
       </div>
+    </div>
+    </div>
     </div>
     <footer>
       <div class="row" id="footer">
