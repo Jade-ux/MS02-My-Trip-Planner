@@ -109,6 +109,15 @@ I have tried to set an if statement based on the place.geometry argument, to ale
 
 I tested each user story by clicking through each step to make sure I could find the information I would need if I were one of the users.
 
+1. As a user I should be able to select my country, city and activity to show the markers on the map for my search. I should then be able to click on markers on the map to show more information and from there choose a date and add the item to my itinerary. I should then be able to change the activity type in the drop-down activity field to show other places in the same city and in the same way as above, add items to my itinerary.
+
+I tested this in the following way:
+1.1. I chose a country from the country field
+1.2. I started typing a city name in the city field and when the city I was looking for displayed in the options below the box I clicked on it to select it. I expected the map's view to change to show the city. When I selected the valid city the map panned and zoomed in to the city which is the expected result.
+1.3. From the activities drop-down I chose one activity. I expected the markers to drop down onto the map to show all the activities in my chosen category, and for a table under the map to show all the same activities with titles to allow for easier selection. The markers dropped down showing all activities in my chosen category and the results table populated below the map with the same results, showing titles for each.
+1.4. I clicked on a marker on the map, selected a date and clicked 'Add to itinerary'. I expected the event to be added to the itinerary. The event was added to the itinerary with the title of the place and the date I had chosen, plus a delete button. 
+1.5 I added a number of items until the list length was longer than the space allowed. I expected to be able to continue adding items and see a scroll bar appear so that I would be able to scroll through the items.
+
 **Testing functionality:**
 
 -	I ran manual tests on the functionality in this way:
