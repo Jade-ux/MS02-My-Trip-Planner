@@ -151,10 +151,11 @@ function initMap() {
     .addEventListener("change", setAutocompleteCountry);
 }
 /**
- * Brings city field on form into focus
+ * Brings city field on form into focus and resets the field
  */
-function focusCity() {
+function focusAndResetCity() {
   cityField.focus();
+  cityField.value = "";
 }
 /**
  * Listens for place changing on user input
@@ -163,10 +164,9 @@ function onPlaceChanged() {
   const place = autocomplete.getPlace();
   if (place.geometry) {
     map.panTo(place.geometry.location);
-    map.setZoom(15);
+    map.setZoom(13);
   } else {
-    //cityField.placeholder = "Enter a city";
-    alert("enter city");
+    cityField.placeholder = "Enter a city";
   }
   let activityField = document.getElementById("activity");
   activityField.focus();
@@ -235,6 +235,8 @@ function searchOptions(activity) {
         setTimeout(dropMarker(i), i * 100);
         addResult(results[i], i);
       }
+    }else{
+        alert("There are no places to show, please choose another city")
     }
   });
 }
@@ -262,7 +264,7 @@ function setAutocompleteCountry() {
       lat: 15,
       lng: 0,
     });
-    map.setZoom(2);
+    map.setZoom(3);
   } else {
     autocomplete.setComponentRestrictions({
       country: country,
@@ -410,7 +412,7 @@ $("#addToItinerary").on("click", function (event) {
     let currentEventDate = newEvent.Date;
     let currentEventTitle = newEvent.Title;
     //Here I need to add a delete button to enable user to delete the item
-    let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div col-3">${currentEventDate}&nbsp;</div><div class="col-6 inner-div">${currentEventTitle}</div><button class="white-button" onclick="deleteItem(this)">Delete</button></li>`;
+    let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div  col-3">${currentEventDate}&nbsp;</div><div class="col-6 inner-div">${currentEventTitle}</div><button class="white-button" onclick="deleteItem(this)">Delete</button></li>`;
     actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
     resetItineraryForm();
   }

@@ -109,14 +109,25 @@ I have tried to set an if statement based on the place.geometry argument, to ale
 
 I tested each user story by clicking through each step to make sure I could find the information I would need if I were one of the users.
 
-1. As a user I should be able to select my country, city and activity to show the markers on the map for my search. I should then be able to click on markers on the map to show more information and from there choose a date and add the item to my itinerary. I should then be able to change the activity type in the drop-down activity field to show other places in the same city and in the same way as above, add items to my itinerary.
+1. As a user I should be able to select my country, city and activity to show the markers on the map for my search. I should then be able to click on markers on the map to show more information and from there choose a date and add the item to my itinerary. I should then be able to change the activity type in the drop-down activity field to show other places in the same city and in the same way as above, add items to my itinerary. I should be able to add many items to my itinerary and not be limited to a certain number.
 
 I tested this in the following way:
 1.1. I chose a country from the country field
 1.2. I started typing a city name in the city field and when the city I was looking for displayed in the options below the box I clicked on it to select it. I expected the map's view to change to show the city. When I selected the valid city the map panned and zoomed in to the city which is the expected result.
 1.3. From the activities drop-down I chose one activity. I expected the markers to drop down onto the map to show all the activities in my chosen category, and for a table under the map to show all the same activities with titles to allow for easier selection. The markers dropped down showing all activities in my chosen category and the results table populated below the map with the same results, showing titles for each.
 1.4. I clicked on a marker on the map, selected a date and clicked 'Add to itinerary'. I expected the event to be added to the itinerary. The event was added to the itinerary with the title of the place and the date I had chosen, plus a delete button. 
-1.5 I added a number of items until the list length was longer than the space allowed. I expected to be able to continue adding items and see a scroll bar appear so that I would be able to scroll through the items.
+1.5 I added a number of items until the list length was longer than the space allowed. I expected to be able to continue adding items and see a scroll bar appear so that I would be able to scroll through the items. The scroll bar did appear when the items overflowed and I was able to scroll through the list.
+1.6 I clicked the delete item belonging to an item. Expected result: item would be deleted from the list. Actual result: the item was deleted from the list, therefore the delete functionality is working.
+
+2. As a user who will be travelling to more than one place I should be able to select my country, city and activities and add items to my itinerary as in the user story 1. I should then be able to change my country and city, or change my city only and choose activity types again, and again add new items to the itinerary in addition to the ones that are already there.
+
+I tested this in the following way:
+
+2.1. I followed steps 1.1 to 1.6 above.
+2.2. I then choose a new country from the country select field. Expected result: the city field should clear and the map should pan and zoom to the new country. Actual result: The city field clears and the map pans and zooms to the new country I have set.
+2.3. I type in the city field and choose a valid city from the autocomplete options shown. The map pans and zooms to the new city, as expected. 
+2.4. I choose my activity type. Expected result: map icons should drop onto map to show places with the activity types matching the activity type I chose, if places in my chosen activity type exist in the city I have chosen. Actual result: when places matching the activity type I have chosen exist in my chosen city map icons drop onto the map to show each one. When there are no places matching the activity type, an alert pops up informing me that there are no places to show and to pick another city.
+
 
 **Testing functionality:**
 
@@ -126,8 +137,12 @@ I tested this in the following way:
 - I tried to choose an activity without first choosing a country and city. An alert pops up to let me know I should select a country and city before choosing an activity.
 - I entered data in the place & activities chooser form and then clicked the 'Reset' button and the form refreshed.
 - I entered data into the place & activities chooser form and then refreshed the browser. The form was cleared when the browser refreshed.
+- I entered invalid data into the city field and then tried to chose an activity. An alert pops up to tell me that the city is invalid.
+- I enter a country, then choose a city, then go back to the country and choose a different country. The city field is then reset which is the expected output.
+- I choose a country, city and activities. Then I change the activities type. The map clears of all markers and new markers drop down for the new activity type.
 -	 When adding items to the itinerary - I tried to add an item without a date. When I click 'Add to itinerary' if the date field is blank an alert pops up to let me know I should select a date.
 - I tried adding an event with a date and the event was added to the itinerary, at the bottom of the lisst of events.
+- I try adding items to the itinerary until the content overflows the block. A scrollbar then appears.
 - I clicked the 'Delete' button to the right of the item and the entire item was removed from the itinerary section of the page.
 
 
