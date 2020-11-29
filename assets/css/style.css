@@ -35,9 +35,9 @@ body {
 }
 
 .hero-image {
-    background-image: url("/assets/images/hero-img.jpg");
+    background-image: url("https://jade-ux.github.io/MS02-My-Trip-Planner/assets/images/hero-img.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover"
     background-position: left;
 }
 

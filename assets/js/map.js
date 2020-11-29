@@ -286,7 +286,7 @@ function clearActivity() {
 //Resets all options when reset button is clicked.
 function resetForm() {
   document.getElementById("tripForm").reset();
-  //window.location.hash = "title";
+  window.location.hash = "title";
   initMap();
 }
 //If user is trying to search a city before choosing a country this alerts them to choose a country first
