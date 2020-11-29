@@ -59,7 +59,7 @@ I have also added a focus function to the form functions to show the user which 
 
 There was a bug where if you have already chosen a country you could enter invalid data into the city field and you would not be notified. I added a test to check if the place is undefined and if it is to alert the user to enter a valid city.
 
-There was still a bug after this that if you had already chosen a country and a valid city and then went back to re-enter data into the city field but entered invalid data, you would not be notified. This is because the place is already set on the map. I considered resetting the city on change of the autocomplete field however, this ....
+There was still a bug after this that if you had already chosen a country and a valid city and then went back to re-enter data into the city field but entered invalid data, you would not be notified. This is because the place is already set on the map. In future deployments I will add a button after the city field that must be pressed to change the view to the city. On that button's action I can reset the view and add an if statement to check if the city is valid before panning and zooming to the city.
 
 ### Content hidden below the fold
 
