@@ -208,7 +208,6 @@ function searchActivity() {
     let itinerarySpace = document.getElementById("itinerary-placeholder-div")
     itinerarySpace.replaceWith("")
     searchOptions($("#activity").val());
-    
   }
 }
 /**
