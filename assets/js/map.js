@@ -205,7 +205,10 @@ function searchActivity() {
   } else if (place === undefined) {
     alert("City is not valid, please select a valid city");
   } else {
+    let itinerarySpace = document.getElementById("itinerary-placeholder-div")
+    itinerarySpace.replaceWith("")
     searchOptions($("#activity").val());
+    
   }
 }
 /**
