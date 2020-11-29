@@ -2,6 +2,10 @@
 
 [View my live site here.](https://jade-ux.github.io/MS02-My-Trip-Planner/)
 
+## Index
+
+
+
 ## Purpose
 
 The site allows users to view places of interest near their trip destination and add items to their itinerary.
@@ -50,6 +54,14 @@ In the first version of the site a user could try to type in the city input fiel
 It was also previously possible to select an activity type without first typing in a starting point (country and city). I have now fixed this by adding functionality that will alert the user if she tries to choose an activity before first choosing a city. 
 
 I have also added a focus function to the form functions to show the user which field she should be completing next.
+
+### Entering invalid data into the city field
+
+There was a bug where if you have already chosen a country you could enter invalid data into the city field and you would not be notified. I added a test to check if the place is undefined and if it is to alert the user to enter a valid city.
+
+There was still a bug after this that if you had already chosen a country and a valid city and then went back to re-enter data into the city field but entered invalid data, you would not be notified. This is because the place is already set on the map. I considered resetting the city on change of the autocomplete field however, this ....
+
+### Content hidden below the fold
 
 - There was an issue that users may not see the results table and therefore not know it is there. I have added code to change the view once all fields in the form are set, if results are present, so that the user sees the map and top of the results table. [The idea was from here](http://jsfiddle.net/nick_craver/ntr5b/)
 

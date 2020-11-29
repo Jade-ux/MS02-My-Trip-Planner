@@ -2,18 +2,54 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
     <!--Jasmin testing-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine.js" integrity="sha512-dqL4nYnbiMiNNy/V2zRK55QXSRVyu26KCuGoL8Zf5lDfKRRf8pBFW8RXe8at36QlB8s8bnOjKP6b5YTalHO6wQ==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine-html.js" integrity="sha512-bqig44hBpNuvBzxsqbHiqwRximGm4UfJAvOeNQHjB7++0D2u/3bcw4ZwmVsqrooii2UJ91oDI/6aANdp3BwcQQ==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/boot.js" integrity="sha512-igPP1Xd0hsvXVZGyfIYeUD779NLEA1Sj/5ts2C/e/22zeUqR6ehA7M/nNLuONalznkHQkGPBESNwzGpwBQD60g==" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine.css" integrity="sha512-XKXP02aeSNI5HsDB3+4MM0tSDXJTBFZpt99xL7PvMz3+A3aRy0F0Ne/CATK+Z72ckE/4Ev9OiosWQr5LtU284Q==" crossorigin="anonymous" />
-    <script src="https://kit.fontawesome.com/3f3f9142b7.js" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine.js"
+      integrity="sha512-dqL4nYnbiMiNNy/V2zRK55QXSRVyu26KCuGoL8Zf5lDfKRRf8pBFW8RXe8at36QlB8s8bnOjKP6b5YTalHO6wQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine-html.js"
+      integrity="sha512-bqig44hBpNuvBzxsqbHiqwRximGm4UfJAvOeNQHjB7++0D2u/3bcw4ZwmVsqrooii2UJ91oDI/6aANdp3BwcQQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/boot.js"
+      integrity="sha512-igPP1Xd0hsvXVZGyfIYeUD779NLEA1Sj/5ts2C/e/22zeUqR6ehA7M/nNLuONalznkHQkGPBESNwzGpwBQD60g=="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine.css"
+      integrity="sha512-XKXP02aeSNI5HsDB3+4MM0tSDXJTBFZpt99xL7PvMz3+A3aRy0F0Ne/CATK+Z72ckE/4Ev9OiosWQr5LtU284Q=="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/3f3f9142b7.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbcTamNPI1Pe4MAqwMqq6JYO3z_zwwwuY&callback=initMap&libraries=places&v=weekly" defer></script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbcTamNPI1Pe4MAqwMqq6JYO3z_zwwwuY&callback=initMap&libraries=places&v=weekly"
+      defer
+    ></script>
     <title>
       Trip Planner
     </title>
@@ -31,61 +67,77 @@
       </div>
     </header>
     <div class="container-fluid" id="search-container">
-    <form id="tripForm">
-      <div class="row row-padded">
-        <div class="col-lg-6 col-12">
-          <div class="row">
-            <div class="col-12 search-bar"><h2>Set your destination</h2></div>
-            <div id="controls" class="col-lg-6 col-12 search-bar">
-              <select id="country" class="search-boxes" onchange="focusAndResetCity()">
-                <option value="all" selected>All</option>
-                <option value="au">Australia</option>
-                <option value="br">Brazil</option>
-                <option value="ca">Canada</option>
-                <option value="fr">France</option>
-                <option value="de">Germany</option>
-                <option value="mx">Mexico</option>
-                <option value="nz">New Zealand</option>
-                <option value="it">Italy</option>
-                <option value="za">South Africa</option>
-                <option value="es">Spain</option>
-                <option value="pt">Portugal</option>
-                <option value="us">U.S.A.</option>
-                <option value="uk">United Kingdom</option>
-              </select>
-            </div>
-            <div id="locationField" class="col-lg-6 col-12 search-bar">
-              <input id="autocomplete" placeholder="Start typing a city name" class="search-boxes" type="text" oninput="isCountryChosen()" onchange="clearActivity()"/>
-            </div>
-          </div>
-        </div>
-        <!--Activities search-->
-        <div class="col-lg-4 col-12">
-          <div class="search-bar"><h2>Choose your activities</h2></div>
-          <div class="row">
-            <div class="col-12 search-bar">
-              <select class="search-boxes" id="activity" onchange="searchActivity()">
-                <option value="default">Places to visit</option>
-                <option value="lodging">Accommodation</option>
-                <option value="restaurant">Restaurants</option>
-                <option value="museum">Museums</option>
-                <option value="art_gallery">Art galleries</option>
-                <option value="attraction">Attractions</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="night_life">Night life</option>
-                <option value="shopping">Shopping</option>
-                <option value="worship">Places of worship</option>
-                <option value="spa">Spas and salons</option>
-              </select>
+      <form id="tripForm">
+        <div class="row row-padded">
+          <div class="col-md-6 col-12">
+            <div class="row">
+              <div class="col-12 search-bar"><h2>Set your destination</h2></div>
+              <div id="controls" class="col-lg-6 col-12 search-bar">
+                <select
+                  id="country"
+                  class="search-boxes"
+                  onchange="focusAndResetCity()"
+                >
+                  <option value="all" selected>All</option>
+                  <option value="au">Australia</option>
+                  <option value="br">Brazil</option>
+                  <option value="ca">Canada</option>
+                  <option value="fr">France</option>
+                  <option value="de">Germany</option>
+                  <option value="mx">Mexico</option>
+                  <option value="nz">New Zealand</option>
+                  <option value="it">Italy</option>
+                  <option value="za">South Africa</option>
+                  <option value="es">Spain</option>
+                  <option value="pt">Portugal</option>
+                  <option value="us">U.S.A.</option>
+                  <option value="uk">United Kingdom</option>
+                </select>
+              </div>
+              <div id="locationField" class="col-md-6 col-12 search-bar">
+                <input
+                  id="autocomplete"
+                  placeholder="Start typing a city name"
+                  class="search-boxes"
+                  type="text"
+                  oninput="isCountryChosen()"
+                  onchange="clearActivity()"
+                />
+              </div>
             </div>
           </div>
+          <!--Activities search-->
+          <div class="col-md-4 col-12">
+            <div class="search-bar"><h2>Choose your activities</h2></div>
+            <div class="row">
+              <div class="col-12 search-bar">
+                <select
+                  class="search-boxes"
+                  id="activity"
+                  onchange="searchActivity()"
+                >
+                  <option value="default">Places to visit</option>
+                  <option value="lodging">Accommodation</option>
+                  <option value="restaurant">Restaurants</option>
+                  <option value="museum">Museums</option>
+                  <option value="art_gallery">Art galleries</option>
+                  <option value="attraction">Attractions</option>
+                  <option value="entertainment">Entertainment</option>
+                  <option value="night_life">Night life</option>
+                  <option value="shopping">Shopping</option>
+                  <option value="worship">Places of worship</option>
+                  <option value="spa">Spas and salons</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!--Reset button-->
+          <div class="col-lg-2 col-12">
+            <button onclick="resetForm()" class="white-button reset-button">
+              Reset
+            </button>
+          </div>
         </div>
-    <!--Reset button-->
-    <div class="col-lg-2 col-12">
-    <button onclick="resetForm()" class="white-button reset-button">Reset</button>
-    </div>
-    <span id="noresult"></span>
-      </div>
       </form>
     </div>
     <!--Info boxes-->
@@ -113,22 +165,22 @@
         <div class="row">
           <div class="col-12"><h4>Add to your itinerary</h4></div>
         </div>
-        <div class="row">
+        <div class="row iw-rows">
           <form id="myForm">
             <div class="row">
-            <!--Array for itinerary items-->
-              <input type="hidden" id="AllData" value="[]">
-              <div class="col-4">
-                <label class="white-label" for="iw-date">Date:</label>
+              <div class="col-2">
+                <label class="white-label" for="iw-date">
+                <i class="fas fa-calendar-alt icons"></i>
+                </label>
               </div>
-              <div class="col-8">
-                <input id="iw-date" name="event-date" type="date"/>
+              <div class="col-10">
+                <input id="iw-date" name="event-date" type="date" />
               </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
+              <div class="col-md-4 col-12">
+                <!--Array for itinerary items-->
+                <input type="hidden" id="AllData" value="[]" />
                 <button class="white-button" id="addToItinerary">
-                  Add entry
+                  Add
                 </button>
               </div>
             </div>
@@ -139,34 +191,32 @@
     <!--Map and itinerary row-->
     <div class="container-fluid no-top-margin-container">
       <div class="row" id="map-row">
-        <div class="col-sm" id="map">
-        </div>
+        <div class="col-sm" id="map"></div>
         <div class="col-sm" id="itinerary-block">
-        <div class="col-12 itinerary-headers">
-          <h2>Itinerary creator</h2>
-        </div>
-        <div class="row zero-margin-row">
-          <div id="actualItinerary">
-            <ul>
-            </ul>
+          <div class="itinerary-headers">
+            <h2>Itinerary creator</h2>
           </div>
+          <div class="row zero-margin-row">
+            <div id="actualItinerary">
+              <ul></ul>
+            </div>
           </div>
         </div>
       </div>
-      </div>
+    </div>
     <div class="container-fluid">
-    <div class="row">
-    <div id="listing" class="row-padded">
-      <div id="resultsTable">
-              <div><h2 id="results-title"></h2></div>
-        <div class="row" id="results"></div>
+      <div class="row">
+        <div id="listing" class="row-padded">
+          <div id="resultsTable">
+            <div><h2 id="results-title"></h2></div>
+            <div class="row" id="results"></div>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
     </div>
     <footer>
       <div class="row" id="footer">
-      <div class="col-6"><a href="#title">Back to the top</a></div>
+        <div class="col-6"><a href="#title">Back to the top</a></div>
       </div>
     </footer>
     <script src="assets/js/map.js"></script>
