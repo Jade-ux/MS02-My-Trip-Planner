@@ -422,7 +422,7 @@ $("#addToItinerary").on("click", function (event) {
     let currentEventDate = newEvent.Date;
     let currentEventTitle = newEvent.Title;
     //Here I need to add a delete button to enable user to delete the item
-    let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div  col-3">${currentEventDate}&nbsp;</div><div class="col-6 inner-div">${currentEventTitle}</div><button class="white-button" onclick="deleteItem(this)">Delete</button></li>`;
+    let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div  col-lg-3 col-12"><i class="fas fa-calendar-alt icons"></i>${currentEventDate}&nbsp;</div><div class="col-lg-6 col-12 inner-div"><i class="fas fa-map-marker-alt icons"></i>${currentEventTitle}</div><button class="white-button col-lg-3 col-6" onclick="deleteItem(this)"><i class="fas fa-trash-alt icons"></i>Remove</button></li><hr class="itinerary-line col-12">`;
     actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
     resetItineraryForm();
   }
