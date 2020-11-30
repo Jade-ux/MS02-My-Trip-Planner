@@ -2,8 +2,11 @@
 
 [View my live site here.](https://jade-ux.github.io/MS02-My-Trip-Planner/)
 
-## Index
+## Table of contents
 
+1. [**Purpose**](#Purpose)     
+- [**Core requirements**](##Core requirements)  
+- [**UX**](##UX)   
 
 
 ## Purpose
@@ -17,17 +20,12 @@ The site allows users to view places of interest near their trip destination and
 
 ## UX
 
-### User story 1
+### User Stories
 
-I am planning a holiday and want to see all the attractions near the city I will be staying in. I would like to make a list of places to see so that I can make the most of my time away.
-
-### User story 2
-
-I am travelling for work and want to see what I can do at my destination in my free time. I want to plan some activities around my business commitments. 
-
-### User story 3
-
-I am trying to decide where to travel to and would like to view all the places of interest near cities I am considering. 
+"**As a user, I want:**"
+- *to plan a holiday in one country and city. I want to plan what to do each day, choosing between different activities.*
+- *to plan a holiday in more than one city. I want to create an itinerary of activities from all the cities I wish to visit.*
+- *to see all the activities around the cities I am considering travelling to, so that I can choose which city to travel to and then create an itinerary of activities for my stay there.*
 
 ## Design
 
