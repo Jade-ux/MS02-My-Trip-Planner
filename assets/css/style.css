@@ -178,7 +178,7 @@ input {
   color: #009cbf;
   margin-bottom: 10px;
   margin-left: 5px;
-  width: 100%;
+  width: 9rem;
 }
 
 .minus-margin-container {
@@ -240,8 +240,15 @@ input {
 
 @media screen and (max-width: 767.98px) {
   #actualItinerary {
-      overflow-y: hidden;
-      max-height: 100%;
+    overflow-y: hidden;
+    max-height: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #itinerary-block {
+    margin-left: 0px;
+    padding-left: 0px;
   }
 }
 
