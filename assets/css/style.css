@@ -229,15 +229,15 @@ input {
 }
 
 @media screen and (max-width: 800px) {
-#itinerary-block {
-  margin-left: -15px;
-}
+  #itinerary-block {
+    margin-left: -15px;
+  }
 }
 
-@media screen and (max-width: 412px) {
-#itinerary-block {
-  margin-left: 10px;
-}
+@media screen and (max-width: 500px) {
+  #itinerary-block {
+    margin-left: 10px;
+  }
 }
 
 #actualItinerary {

@@ -5,9 +5,16 @@
 ## Table of contents
 
 1. [**Purpose**](#Purpose)     
-- [**Core-requirements**](##Core requirements)  
-2. [**UX**](##UX)
--  [**User-stories**](### User Stories)  
+- [**Core-requirements**](#Core requirements)  
+2. [**UX**](#UX)
+-  [**User-stories**](#User Stories)  
+3. [**Design**](#Design) 
+4. [**Issues/bugs**](#Issues/bugs)
+5. [**Features**](#Features)
+6. [**Technologies-Used**](#Technologies Used)
+7. [**Testing**](#Testing)
+8. [**Deployment**](#Deployment)
+9. [**Credits**](#Credits)
 
 
 ## Purpose
@@ -194,10 +201,6 @@ My HTML was tested using the [W3C Markup Validation Service](https://validator.w
 
 I tested my JavaScript code using [JS Hint](https://jshint.com/) and the result was that there were no errors. 
 
-### Responsive behaviour
-
-- The site uses Bootstrap's breakpoints to break down content for small, medium and large screens, to provide a good user experience on any device.  
-
 ## Deployment
 
 This site is deployed on GitHub pages and I deployed it in the following way:
@@ -234,3 +237,4 @@ This site is deployed on GitHub pages and I deployed it in the following way:
 
 - Thank you to the Code Institute Tutors for support.
 - Thank you to my mentor, Dick Vlaanderen for support and guidance.
+
