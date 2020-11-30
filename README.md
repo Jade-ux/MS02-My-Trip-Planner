@@ -5,8 +5,9 @@
 ## Table of contents
 
 1. [**Purpose**](#Purpose)     
-- [**Core requirements**](##Core requirements)  
-- [**UX**](##UX)   
+- [**Core-requirements**](##Core requirements)  
+2. [**UX**](##UX)
+-  [**User-stories**](### User Stories)  
 
 
 ## Purpose
@@ -144,6 +145,22 @@ I tested this in the following way:
 3.1. I follow the steps 1.1 to 1.6 above.
 3.2. I then select a new activity from the activity field. Expected result: the markers from the previous activity choice should be cleared and markers for the new activity choice should appear on the map and results table. Actual result: markers from the previous activity are cleared and markers for the new activity type drop onto the map and populate the results table. Items in the itinerary do not clear which meets expectations as I want to add to the items already there.
 3.3. I now add items to the itinerary in the same way as step 1.4 above.
+
+### Responsive design
+
+- I have tested the website's design features and the functionality across devices and using Firefox developer tools.
+
+Devices I tested on:
+
+- Desktop - 950px wide and smaller (and real laptop and widescreen)
+- Tablets/iPads - 768px - 412px wide
+- Mobile phones - 411px - 360px wide (and a real iPhone 6)
+
+I tested on each device in the following way:
+
+- I opened the page and viewed the entire page to check that all features appeared as expected. 
+- There were many design bugs in the beginning of my development (working on resubmission) on mobile and I fixed each one that I could see, testing again on mobile after all fixes were applied. 
+- I accessed each feature, viewing the changes to the page on desktop and the selection of devices above. I checked that I could perform the actions needed on each device. All actions could be performed as expected.
 
 **Testing functionality:**
 

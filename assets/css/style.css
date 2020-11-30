@@ -144,7 +144,7 @@ h4 {
 #listing {
   width: 100%;
   height: auto;
-  overflow-y: auto;
+  overflow-y: hidden;
   left: 0;
   cursor: pointer;
   background-color: #009cbf;
@@ -228,6 +228,18 @@ input {
   margin-left: 10px;
 }
 
+@media screen and (max-width: 800px) {
+#itinerary-block {
+  margin-left: -15px;
+}
+}
+
+@media screen and (max-width: 412px) {
+#itinerary-block {
+  margin-left: 10px;
+}
+}
+
 #actualItinerary {
   height: auto;
   max-height: 350px;
@@ -246,7 +258,7 @@ input {
 }
 
 @media screen and (max-width: 800px) {
-  #itinerary-block {
+  #itinerary-placeholder-div {
     margin-left: 0px;
     padding-left: 0px;
   }
@@ -489,6 +501,15 @@ div#iw-rating {
   margin: 0px 15px 20px 15px;
   padding-bottom: 15px;
   overflow-y: hidden;
+}
+
+@media screen and (max-width: 767.98px) {
+  #resultsTable {
+    margin-left: auto;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-right: auto;
+  }
 }
 
 #results {

@@ -303,9 +303,6 @@ function resetForm() {
 //If user is trying to search a city before choosing a country this alerts them to choose a country first
 function isCountryChosen() {
   if (countryField.value == "all") {
-    //If using this message instead of alert, add div with this ID under autocomplete, in same div container.
-    //let countryError = document.getElementById("country-error");
-    //countryError.innerHTML = "Please choose a country before searching for a city"
     alert("Please choose a country before searching for a city");
     resetForm();
     countryField.focus();
@@ -338,6 +335,7 @@ function addResult(result, i) {
   tr.className = "col-lg-4 col-12 result-tr";
   tr.onclick = function () {
     google.maps.event.trigger(markers[i], "click");
+    window.location.hash = "map";
   };
   const iconTd = document.createElement("div");
   const nameTd = document.createElement("div");
