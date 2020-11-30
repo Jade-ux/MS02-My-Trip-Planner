@@ -145,7 +145,6 @@ I tested this in the following way:
 3.2. I then select a new activity from the activity field. Expected result: the markers from the previous activity choice should be cleared and markers for the new activity choice should appear on the map and results table. Actual result: markers from the previous activity are cleared and markers for the new activity type drop onto the map and populate the results table. Items in the itinerary do not clear which meets expectations as I want to add to the items already there.
 3.3. I now add items to the itinerary in the same way as step 1.4 above.
 
-
 **Testing functionality:**
 
 -	I ran manual tests on the functionality in this way:

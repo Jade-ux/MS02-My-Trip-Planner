@@ -164,7 +164,7 @@ function onPlaceChanged() {
   const place = autocomplete.getPlace();
   if (place.geometry) {
     map.panTo(place.geometry.location);
-    map.setZoom(13);
+    map.setZoom(11);
   } else {
     cityField.placeholder = "Enter a city";
   }
@@ -192,6 +192,17 @@ const activityMap = {
   worship: ["church", "mosque", "hindu_temple", "synagogue"],
   spa: ["spa", "beauty_salon", "hair_care"],
 };
+
+function makeInvisible() {
+    let placeholder = document.getElementById("itinerary-placeholder-div");
+    let placeholderText = document.getElementById("itinerary-placeholder-text");
+    if (placeholder.classList.contains("hero-image") && placeholderText.classList.contains("hero-text")) {
+        placeholder.classList.remove("hero-image");
+        placeholder.classList.add("make-invisible");
+        placeholderText.classList.remove("hero-text");
+        placeholderText.classList.add("make-invisible");
+    }
+}
 /**
  * Activated when search is changed on activity drop-down
  */
@@ -205,8 +216,6 @@ function searchActivity() {
   } else if (place === undefined) {
     alert("City is not valid, please select a valid city");
   } else {
-    let itinerarySpace = document.getElementById("itinerary-placeholder-div")
-    itinerarySpace.replaceWith("")
     searchOptions($("#activity").val());
   }
 }
@@ -221,8 +230,8 @@ function searchOptions(activity) {
   };
   places.nearbySearch(search, (results, status, pagination) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-        //Changes the view to show the map and results table
-    window.location.hash = "map-row"
+      //Changes the view to show the map and results table
+      window.location.hash = "map-row";
       clearResults();
       clearMarkers();
       for (let i = 0; i < results.length; i++) {
@@ -239,8 +248,10 @@ function searchOptions(activity) {
         setTimeout(dropMarker(i), i * 100);
         addResult(results[i], i);
       }
-    }else{
-        alert("There are no places to show, please choose another activity or city")
+    } else {
+      alert(
+        "There are no places to show, please choose another activity or city"
+      );
     }
   });
 }
@@ -315,8 +326,8 @@ function dropMarker(i) {
  * @param {number} i
  */
 function addResult(result, i) {
-let resultsTitle = document.getElementById("results-title");
-resultsTitle.innerHTML = "Results"
+  let resultsTitle = document.getElementById("results-title");
+  resultsTitle.innerHTML = "Results";
   const results = document.getElementById("results");
   const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
   const markerIcon = MARKER_PATH + markerLetter + ".png";
@@ -407,6 +418,7 @@ function resetItineraryForm() {
  * Creates an object when the 'Add to itinerary' button is clicked and adds the values of the object to the Itinerary in the DOM
  */
 $("#addToItinerary").on("click", function (event) {
+    makeInvisible();
   event.preventDefault();
   //Checks to see if event date is empty and if it is, alerts the user. If not, adds the event to the itinerary.
   if ($('[name="event-date"]').val() === "") {
