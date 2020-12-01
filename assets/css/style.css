@@ -61,6 +61,8 @@ h4 {
   color: #575656;
 }
 
+/*---------------------------------------------Places & activities search*/
+
 #search-container {
   background-color: #99d5e0;
   width: 100%;
@@ -192,7 +194,7 @@ input {
   min-width: 170px;
 }
 
-/*-----------------------Buttons----------------*/
+/*---------------------------------------------Button*/
 
 .white-button {
   color: #009cbf;
@@ -326,7 +328,7 @@ input {
   }
 }
 
-/*-----------------------Styles from Google----------------*/
+/*---------------------------------------------Google map styles*/
 
 table {
   font-size: 12px;
@@ -367,7 +369,7 @@ table {
   margin: 4px;
 }
 
-/*-------------------------Info Boxes*/
+/*---------------------------------------------Info boxes*/
 
 #info-content {
   min-height: fit-content;

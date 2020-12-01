@@ -192,7 +192,7 @@ The site was tested for broken links using the [Dead Link Checker](https://www.d
 
 ### Validating CSS
 
-I tested my CSS code using the [Jigsaw validator](https://jigsaw.w3.org/css-validator/) and the result was that no errors were found.
+I tested my CSS code using the [Jigsaw validator](https://jigsaw.w3.org/css-validator/) and the result was that no errors were found. 
 
 ### Validating mark-up
 
