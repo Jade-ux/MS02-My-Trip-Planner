@@ -114,7 +114,9 @@ const countries = {
     zoom: 5,
   },
 };
-//Focuses the country field when document loads
+/**
+ * Focuses the country field when document loads
+ */
 $(document).ready(function () {
   countryField.focus();
 });
@@ -143,7 +145,7 @@ function initMap() {
     }
   );
   places = new google.maps.places.PlacesService(map);
-  //Add an event listener to the country
+  //Add an event listener to the country field
   autocomplete.addListener("place_changed", onPlaceChanged);
   //Zoom the map to the chosen city
   document
@@ -158,7 +160,7 @@ function focusAndResetCity() {
   cityField.value = "";
 }
 /**
- * Listens for place changing on user input
+ * Listens for place changing on user input for city field
  */
 function onPlaceChanged() {
   const place = autocomplete.getPlace();
@@ -192,16 +194,21 @@ const activityMap = {
   worship: ["church", "mosque", "hindu_temple", "synagogue"],
   spa: ["spa", "beauty_salon", "hair_care"],
 };
-
+/**
+ * Makes the itinerary placeholder box invisible
+ */
 function makeInvisible() {
-    let placeholder = document.getElementById("itinerary-placeholder-div");
-    let placeholderText = document.getElementById("itinerary-placeholder-text");
-    if (placeholder.classList.contains("hero-image") && placeholderText.classList.contains("hero-text")) {
-        placeholder.classList.remove("hero-image");
-        placeholder.classList.add("make-invisible");
-        placeholderText.classList.remove("hero-text");
-        placeholderText.classList.add("make-invisible");
-    }
+  let placeholder = document.getElementById("itinerary-placeholder-div");
+  let placeholderText = document.getElementById("itinerary-placeholder-text");
+  if (
+    placeholder.classList.contains("hero-image") &&
+    placeholderText.classList.contains("hero-text")
+  ) {
+    placeholder.classList.remove("hero-image");
+    placeholder.classList.add("make-invisible");
+    placeholderText.classList.remove("hero-text");
+    placeholderText.classList.add("make-invisible");
+  }
 }
 /**
  * Activated when search is changed on activity drop-down
@@ -242,7 +249,7 @@ function searchOptions(activity) {
           animation: google.maps.Animation.DROP,
           icon: markerIcon,
         });
-        //This opens an infobox when an icon on the map is clicked
+        //Opens an infobox when an icon on the map is clicked
         markers[i].placeResult = results[i];
         google.maps.event.addListener(markers[i], "click", showInfoWindow);
         setTimeout(dropMarker(i), i * 100);
@@ -377,7 +384,7 @@ function showInfoWindow() {
     }
   );
 }
-// Load the place information into the HTML elements used by the info window.
+// Loads the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
   resetItineraryForm();
   document.getElementById("iw-icon").innerHTML =
@@ -391,7 +398,7 @@ function buildIWContent(place) {
       place.formatted_phone_number;
   } else {
     document.getElementById("iw-phone-row").style.display = "none";
-  } // Assign ratings to places
+  } // Assigns ratings to places
   if (place.rating) {
     let ratingHtml = "";
     for (let i = 0; i < 5; i++) {
@@ -411,12 +418,11 @@ function buildIWContent(place) {
 function resetItineraryForm() {
   document.getElementById("myForm").reset();
 }
-//Inspiration on creating an object from: https://jsbin.com/fawufajoke/edit?html,css,js,console,output
 /**
  * Creates an object when the 'Add to itinerary' button is clicked and adds the values of the object to the Itinerary in the DOM
  */
 $("#addToItinerary").on("click", function (event) {
-    makeInvisible();
+  makeInvisible();
   event.preventDefault();
   //Checks to see if event date is empty and if it is, alerts the user. If not, adds the event to the itinerary.
   if ($('[name="event-date"]').val() === "") {
@@ -434,7 +440,6 @@ $("#addToItinerary").on("click", function (event) {
     console.log(itineraryList);
     let currentEventDate = newEvent.Date;
     let currentEventTitle = newEvent.Title;
-    //Here I need to add a delete button to enable user to delete the item
     let itineraryHTML = `<li class="itinerary-list-item"><div class="inner-div  col-lg-3 col-12"><i class="fas fa-calendar-alt icons" aria-hidden="true"></i>${currentEventDate}&nbsp;</div><div class="col-lg-6 col-12 inner-div"><i class="fas fa-map-marker-alt icons" aria-hidden="true"></i>${currentEventTitle}</div><button class="white-button col-lg-3 col-6" onclick="deleteItem(this)"><i class="fas fa-trash-alt icons" aria-hidden="true"></i>Remove</button><hr class="itinerary-line col-12"></li>`;
     actualItinerary.insertAdjacentHTML("beforeend", itineraryHTML);
     resetItineraryForm();

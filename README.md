@@ -5,13 +5,11 @@
 ## Table of contents
 
 1. [**Purpose**](#Purpose)     
-- [**Core-requirements**](#Core requirements)  
 2. [**UX**](#UX)
--  [**User-stories**](#User Stories)  
 3. [**Design**](#Design) 
 4. [**Issues/bugs**](#Issues/bugs)
 5. [**Features**](#Features)
-6. [**Technologies-Used**](#Technologies Used)
+6. [**Technologies**](#Technologies)
 7. [**Testing**](#Testing)
 8. [**Deployment**](#Deployment)
 9. [**Credits**](#Credits)
@@ -113,7 +111,7 @@ I have tried to set an if statement based on the place.geometry argument, to ale
 -	**Email itinerary:** Functionality to allow users to email their itinerary to themselves to be added in future developments.
 -	**Distance slider:** I would like to allow users to set the distance from their destination within which they would like to search for results.
 
-## Technologies Used
+## Technologies
 
 - HTML5: This site was written in HTML5
 - CSS3: site styled with CSS3. 
@@ -127,7 +125,7 @@ I have tried to set an if statement based on the place.geometry argument, to ale
 
 ### Testing user stories 
 
-I tested each user story by clicking through each step to make sure I could find the information I would need if I were one of the users.
+I tested each user story by clicking through each step to make sure I could find the information I need.
 
 1. As a user I should be able to select my country, city and activity to show the markers on the map for my search. I should then be able to click on markers on the map to show more information and from there choose a date and add the item to my itinerary. I should then be able to change the activity type in the drop-down activity field to show other places in the same city and in the same way as above, add items to my itinerary. I should be able to add many items to my itinerary and not be limited to a certain number.
 
@@ -199,7 +197,9 @@ I tested my CSS code using the [Jigsaw validator](https://jigsaw.w3.org/css-vali
 
 My HTML was tested using the [W3C Markup Validation Service](https://validator.w3.org/) and the only result was a note that ‘type’ is unnecessary to add for the script reference at line 27 but I have left that in for now as it was only a warning.
 
-I tested my JavaScript code using [JS Hint](https://jshint.com/) and the result was that there were no errors. 
+### Validating JavaScript
+
+I tested my JavaScript code using [JS Hint](https://jshint.com/) and the result was that there were no errors. There were a number of warnings relating to variables not defined eg. '$' and 'google', however, these are variables that would be defined in the Google API or in JavaScript and therefore I am satisfied they do not need to be addressed.
 
 ## Deployment
 
@@ -232,6 +232,11 @@ This site is deployed on GitHub pages and I deployed it in the following way:
 
 -	The site uses the Google Maps API to search countries, cities and places.
 -	I used the extensive library of Google documentation to assist with the development of the code for this site.
+- Image: the image in the itinerary placeholder block is from [Unsplash](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjdxerBl6ztAhVRQEEAHb3GDe4QFjAAegQIARAD&url=https%3A%2F%2Funsplash.com%2F&usg=AOvVaw07uHYdeyZQMneg6p8JTUC)
+
+### Atribution
+
+- Creating an object from the DOM elements: I used [this](//Inspiration on creating an object from: https://jsbin.com/fawufajoke/edit?html,css,js,console,output) as a guide.
 
 ### Acknowledgements
 
