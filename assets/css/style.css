@@ -204,17 +204,6 @@ input {
   border-radius: 3px;
 }
 
-.reset-button {
-  margin-top: 40px;
-}
-
-@media screen and (max-width: 801px) {
-  .reset-button {
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
-}
-
 /*---------------------------------------------Map & itinerary*/
 
 #map {

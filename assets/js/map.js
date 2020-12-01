@@ -311,7 +311,6 @@ function resetForm() {
 function isCountryChosen() {
   if (countryField.value == "all") {
     alert("Please choose a country before searching for a city");
-    resetForm();
     countryField.focus();
   }
 }

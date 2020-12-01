@@ -45,6 +45,8 @@ In future developments I would like to include a distance slider to allow users 
 
 **Colours:** I chose colours from the sea, beach sand and strawberry ice cream which I feel are relaxing colours and I hope users associate these with the feeling of taking a trip away.
 
+**Icons:** I used icons from [Font Awesome.](https://fontawesome.com/)
+
 **Navigation:** There is no top navigation on the site as it is only a one page site. I have added a ‘Back to top’ link in the footer for mobile users.
 
 **Responsive design:** I have used Bootstrap’s grid layout to break the design down for smaller screens, ensuring content will be visible and easy to navigate on desktop, mobile and screen sizes in between.
@@ -76,9 +78,7 @@ This was fixed by moving the function to add the itinerary item out of the build
 
 ### Reset
 
-In the previous version of the website there was no reset function. I have now added a button that will allow the user to reset the main form options. 
-
-I also found that when using the browser Safari, when the page was reloaded the form would not be reset, it would contain the data set before the page was reloaded. I have therefore added the resetForm() to the body element to be run when the page loads. The for is now reset with the page loads.
+I found that when using the browser Safari, when the page was reloaded the form would not be reset, it would contain the data set before the page was reloaded. I have therefore added the resetForm() to the body element to be run when the page loads. The for is now reset with the page loads.
 
 The date on the Itinerary form was also not emptying when the page was refreshed, therefore I have added the resetItineraryForm() function to the buildIWContent() function to ensure the user sees a blank date field when they open the info window. 
 
@@ -110,6 +110,7 @@ I have tried to set an if statement based on the place.geometry argument, to ale
 
 -	**Email itinerary:** Functionality to allow users to email their itinerary to themselves to be added in future developments.
 -	**Distance slider:** I would like to allow users to set the distance from their destination within which they would like to search for results.
+- **Back to top floating button** I would like to make the 'Back to top' button floating so that when the user is scrolling on mobile the button is always visible on the side of their screen.
 
 ## Technologies
 
@@ -195,7 +196,9 @@ I tested my CSS code using the [Jigsaw validator](https://jigsaw.w3.org/css-vali
 
 ### Validating mark-up
 
-My HTML was tested using the [W3C Markup Validation Service](https://validator.w3.org/) and the only result was a note that ‘type’ is unnecessary to add for the script reference at line 27 but I have left that in for now as it was only a warning.
+My HTML was tested using the [W3C Markup Validation Service](https://validator.w3.org/) and the only two results were:
+- ‘type’ is unnecessary to add for the script reference but I have left that in for now as it was only a warning. 
+- the results heading h2 is empty, but this will be filled in by the JavaScript code and I have therefore not changed anything there. 
 
 ### Validating JavaScript
 
@@ -236,6 +239,7 @@ This site is deployed on GitHub pages and I deployed it in the following way:
 
 ### Atribution
 
+- I consulted [Google Documentation](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch) on the places API when writing my code for the mao functionality.
 - Creating an object from the DOM elements: I used [this](//Inspiration on creating an object from: https://jsbin.com/fawufajoke/edit?html,css,js,console,output) as a guide.
 
 ### Acknowledgements
