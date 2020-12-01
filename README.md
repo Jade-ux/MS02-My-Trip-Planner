@@ -85,28 +85,29 @@ I manually tested each user story by clicking through each step to make sure I c
 1. As a user I should be able to select my country, city and activity to show the markers on the map for my search, then click on markers on the map to show more information and from there add the item to my itinerary. I should be able to change the activity type and add further items to my itinerary. I should be able to add many items to my itinerary and delete items I no longer want on my itinerary.
 
 I tested this in the following way:
-1.1. I chose a country from the country field
-1.2. I started typing a city name in the city field and when the city I was looking for displayed in the options below the box I clicked on it to select it. I expected the map's view to change to show the city. When I selected the valid city the map panned and zoomed in to the city which is the expected result.
-1.3. From the activities drop-down I chose one activity. I expected the markers to drop down onto the map to show all the activities in my chosen category, and for a table under the map to show all the same activities with titles to allow for easier selection. The markers dropped down showing all activities in my chosen category and the results table populated below the map with the same results, showing titles for each.
-1.4. I clicked on a marker on the map, selected a date and clicked 'Add to itinerary'. I expected the itinerary placeholder image and text to disappear and the event to be added to the itinerary. The placeholder image and text disappeared and the event was added to the itinerary with the title of the place and the date I had chosen, plus a delete button. The result it as expected. 
-1.5 I added a number of items until the list length was longer than the space allowed. I expected to be able to continue adding items and see a scroll bar appear so that I would be able to scroll through the items. The scroll bar did appear when the items overflowed and I was able to scroll through the list.
-1.6 I clicked the delete item belonging to an item. Expected result: item would be deleted from the list. Actual result: the item was deleted from the list, therefore the delete functionality is working.
-1.7. I refreshed the page and the place setter form was cleared. This is the expected result.
-1.8 I tested adding invalid data to each field or leaving fields blank, please see the [Testing functionality seciton](#Testing_functionality) for results.
+
+- 1.1. I chose a country from the country field
+- 1.2. I started typing a city name in the city field and when the city I was looking for displayed in the options below the box I clicked on it to select it. I expected the map's view to change to show the city. When I selected the valid city the map panned and zoomed in to the city which is the expected result.
+- 1.3. From the activities drop-down I chose one activity. I expected the markers to drop down onto the map to show all the activities in my chosen category, and for a table under the map to show all the same activities with titles to allow for easier selection. The markers dropped down showing all activities in my chosen category and the results table populated below the map with the same results, showing titles for each.
+- 1.4. I clicked on a marker on the map, selected a date and clicked 'Add to itinerary'. I expected the itinerary placeholder image and text to disappear and the event to be added to the itinerary. The placeholder image and text disappeared and the event was added to the itinerary with the title of the place and the date I had chosen, plus a delete button. The result it as expected. 
+- 1.5 I added a number of items until the list length was longer than the space allowed. I expected to be able to continue adding items and see a scroll bar appear so that I would be able to scroll through the items. The scroll bar did appear when the items overflowed and I was able to scroll through the list.
+- 1.6 I clicked the delete item belonging to an item. Expected result: item would be deleted from the list. Actual result: the item was deleted from the list, therefore the delete functionality is working.
+- 1.7. I refreshed the page and the place setter form was cleared. This is the expected result.
+- 1.8 I tested adding invalid data to each field or leaving fields blank, please see the [Testing functionality section](#Testing_functionality) for results.
 
 2. As a user who will be travelling to more than one place I should be able to select my country, city and activities and add items to my itinerary as in the user story 1. I should then be able to change my country and city, or change my city only, choose activity types again, and again add new items to the itinerary in addition to the ones that are already there.
 
 I tested this in the following way:
 
-2.1. I followed steps 1.1 to 1.6 above.
-2.2. I then choose a new country from the country select field. Expected result: the city field should clear, the map should pan and zoom to the new country, the activities select field should reset and the markers should be cleared from the map. Actual result: The city field clears, the map pans and zooms to the new country I have set, the activity field resets and the markers are cleared from the map.
-2.3. I type in the city field and choose a valid city from the autocomplete options shown. The map pans and zooms to the new city, as expected. 
-2.4. I choose my activity type. Expected result: map icons should drop onto map to show places with the activity types matching the activity type I chose, if places in my chosen activity type exist in the city I have chosen. Actual result: when places matching the activity type I have chosen exist in my chosen city map icons drop onto the map to show each one. When there are no places matching the activity type, an alert pops up informing me that there are no places to show and to pick another city.
+- 2.1. I followed steps 1.1 to 1.6 above.
+- 2.2. I then choose a new country from the country select field. Expected result: the city field should clear, the map should pan and zoom to the new country, the activities select field should reset and the markers should be cleared from the map. Actual result: The city field clears, the map pans and zooms to the new country I have set, the activity field resets and the markers are cleared from the map.
+- 2.3. I type in the city field and choose a valid city from the autocomplete options shown. The map pans and zooms to the new city, as expected. 
+- 2.4. I choose my activity type. Expected result: map icons should drop onto map to show places with the activity types matching the activity type I chose, if places in my chosen activity type exist in the city I have chosen. Actual result: when places matching the activity type I have chosen exist in my chosen city map icons drop onto the map to show each one. When there are no places matching the activity type, an alert pops up informing me that there are no places to show and to pick another city.
 
 3. As a user who is looking for many different activity types I should be able to add items to my itinerary from many different activity types.
-3.1. I follow the steps 1.1 to 1.6 above.
-3.2. I then select a new activity from the activity field. Expected result: the markers from the previous activity choice should be cleared and markers for the new activity choice should appear on the map and results table. Actual result: markers from the previous activity are cleared and markers for the new activity type drop onto the map and populate the results table. Items in the itinerary do not clear which meets expectations as I want to add to the items already there.
-3.3. I now add items to the itinerary in the same way as in step 1.4 above.
+- 3.1. I follow the steps 1.1 to 1.6 above.
+- 3.2. I then select a new activity from the activity field. Expected result: the markers from the previous activity choice should be cleared and markers for the new activity choice should appear on the map and results table. Actual result: markers from the previous activity are cleared and markers for the new activity type drop onto the map and populate the results table. Items in the itinerary do not clear which meets expectations as I want to add to the items already there.
+- 3.3. I now add items to the itinerary in the same way as in step 1.4 above.
 
 ### Responsive design
 
@@ -241,7 +242,7 @@ This site is deployed on GitHub pages and I deployed it in the following way:
 ### Atribution
 
 - I consulted [Google Documentation](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch) on the places API when writing my code for the mao functionality.
-- Creating an object from the DOM elements: I used [this](//Inspiration on creating an object from: https://jsbin.com/fawufajoke/edit?html,css,js,console,output) as a guide.
+- Creating an object from the DOM elements: I used [this resource when creating an object](https://jsbin.com/fawufajoke/edit?html,css,js,console,output) as a guide.
 
 ### Acknowledgements
 
