@@ -22,7 +22,7 @@ The site allows users to view places of interest near their trip destination and
 ## Core requirements
 
 -	Users should be able to pick a country within a pre-defined list, search for a city within that country and then pick from a list of pre-defined place types in order to show places of interest near their destination.
--	They can then clicks on the markers to see more information and when they have found a place they want to visit, they should be able to add it to their itinerary.  
+-	They can then click on the markers to see more information and when they have found a place they want to visit, they should be able to add it to their itinerary.  
 
 ## UX
 
@@ -30,10 +30,10 @@ The site allows users to view places of interest near their trip destination and
 
 "**As a user, I want:**"
 - *to plan a holiday in one country and city. I want to plan what to do each day, choosing between different activities.*
-- *to plan a holiday in more than one city. I want to create an itinerary of activities from all the cities I wish to visit.*
-- *to see all the activities around the cities I am considering travelling to, so that I can choose which city to travel to and then create an itinerary of activities for my stay there.*
+- *to plan a holiday where I will travel to more than one city. I want to create an itinerary of activities from all the cities I wish to visit.*
+- *to choose many different activity types for the city I am planning to visit and add items from each activity type to my itinerary.*
 
-## Design
+### Design
 
 I created wireframes before building the site. This helped me plan how to structure the content, the user journeys and the responsive design.
 
@@ -65,19 +65,80 @@ In future developments I would like to include a distance slider to allow users 
 
 -	**Email itinerary:** Functionality to allow users to email their itinerary to themselves to be added in future developments.
 -	**Distance slider:** I would like to allow users to set the distance from their destination within which they would like to search for results.
-- **Back to top floating button** I would like to make the 'Back to top' button floating so that when the user is scrolling on mobile the button is always visible on the side of their screen.
+-   **Back to top floating button** I would like to make the 'Back to top' button floating so that when the user is scrolling on mobile the button is always visible on the side of their screen.
 
 ## Technologies
 
 - HTML5: This site was written in HTML5
 - CSS3: site styled with CSS3. 
-- [Bootstrap](https://getbootstrap.com/)
-  - This project uses Bootstrap to speed up the development process. Some Bootstrap elements use jQuery, Popper.js and JavaScript.
+- [Bootstrap](https://getbootstrap.com/): This project uses Bootstrap to speed up the development process. Some Bootstrap elements use jQuery, Popper.js and JavaScript.
 -	JavaScript: to create interactive content
 -	jQuery: to speed up development
 -	Google Maps API 
 
 ## Testing
+
+### Testing user stories 
+
+I manually tested each user story by clicking through each step to make sure I could find the information I needed:
+
+1. As a user I should be able to select my country, city and activity to show the markers on the map for my search, then click on markers on the map to show more information and from there add the item to my itinerary. I should be able to change the activity type and add further items to my itinerary. I should be able to add many items to my itinerary and delete items I no longer want on my itinerary.
+
+I tested this in the following way:
+1.1. I chose a country from the country field
+1.2. I started typing a city name in the city field and when the city I was looking for displayed in the options below the box I clicked on it to select it. I expected the map's view to change to show the city. When I selected the valid city the map panned and zoomed in to the city which is the expected result.
+1.3. From the activities drop-down I chose one activity. I expected the markers to drop down onto the map to show all the activities in my chosen category, and for a table under the map to show all the same activities with titles to allow for easier selection. The markers dropped down showing all activities in my chosen category and the results table populated below the map with the same results, showing titles for each.
+1.4. I clicked on a marker on the map, selected a date and clicked 'Add to itinerary'. I expected the itinerary placeholder image and text to disappear and the event to be added to the itinerary. The placeholder image and text disappeared and the event was added to the itinerary with the title of the place and the date I had chosen, plus a delete button. The result it as expected. 
+1.5 I added a number of items until the list length was longer than the space allowed. I expected to be able to continue adding items and see a scroll bar appear so that I would be able to scroll through the items. The scroll bar did appear when the items overflowed and I was able to scroll through the list.
+1.6 I clicked the delete item belonging to an item. Expected result: item would be deleted from the list. Actual result: the item was deleted from the list, therefore the delete functionality is working.
+1.7. I refreshed the page and the place setter form was cleared. This is the expected result.
+1.8 I tested adding invalid data to each field or leaving fields blank, please see the [Testing functionality seciton](#Testing_functionality) for results.
+
+2. As a user who will be travelling to more than one place I should be able to select my country, city and activities and add items to my itinerary as in the user story 1. I should then be able to change my country and city, or change my city only, choose activity types again, and again add new items to the itinerary in addition to the ones that are already there.
+
+I tested this in the following way:
+
+2.1. I followed steps 1.1 to 1.6 above.
+2.2. I then choose a new country from the country select field. Expected result: the city field should clear, the map should pan and zoom to the new country, the activities select field should reset and the markers should be cleared from the map. Actual result: The city field clears, the map pans and zooms to the new country I have set, the activity field resets and the markers are cleared from the map.
+2.3. I type in the city field and choose a valid city from the autocomplete options shown. The map pans and zooms to the new city, as expected. 
+2.4. I choose my activity type. Expected result: map icons should drop onto map to show places with the activity types matching the activity type I chose, if places in my chosen activity type exist in the city I have chosen. Actual result: when places matching the activity type I have chosen exist in my chosen city map icons drop onto the map to show each one. When there are no places matching the activity type, an alert pops up informing me that there are no places to show and to pick another city.
+
+3. As a user who is looking for many different activity types I should be able to add items to my itinerary from many different activity types.
+3.1. I follow the steps 1.1 to 1.6 above.
+3.2. I then select a new activity from the activity field. Expected result: the markers from the previous activity choice should be cleared and markers for the new activity choice should appear on the map and results table. Actual result: markers from the previous activity are cleared and markers for the new activity type drop onto the map and populate the results table. Items in the itinerary do not clear which meets expectations as I want to add to the items already there.
+3.3. I now add items to the itinerary in the same way as in step 1.4 above.
+
+### Responsive design
+
+- I have tested the website's design features and the functionality across devices and using Firefox developer tools.
+
+Devices I tested on:
+
+- Desktop - 950px wide and smaller (and real laptop and widescreen)
+- Tablets/iPads - 768px - 412px wide
+- Mobile phones - 411px - 360px wide (and a real iPhone 6)
+
+I tested on each device in the following way:
+
+- I opened the page and viewed the entire page to check that all features appeared as expected. 
+- There were many design bugs in the beginning of my development (as this latest version is for resubmission) on mobile and I fixed each one that I could see, testing again on mobile after all fixes were applied. See the Issues/bugs section for more information on these.
+- I accessed each feature, viewing the changes to the page on desktop and the selection of devices above. I checked that I could perform the actions needed on each device. All actions could be performed as expected.
+
+## Testing_functionality:
+
+-	I ran manual tests on the functionality in this way:
+-	Selecting a country and then trying to select an activity without first choosing a city. An alert now pops up to let me know that I need to select a city before choosing activities. This is the expected result.
+-	I began typing in the cities field without first choosing a country. An alert pops up to let me know I should select a country first before choosing a city. This is the expected result.
+- I tried to choose an activity without first choosing a country and city. An alert pops up to let me know I should select a country and city before choosing an activity. This is the expected result.
+- I entered data into the place & activities chooser form and then refreshed the browser. The form was cleared when the browser refreshed. This is the expected result.
+- I entered invalid data into the city field and then tried to chose an activity. An alert pops up to tell me that the data is not valid. This is the expected result.
+- I enter a country, then choose a city, then go back to the country and choose a different country. The city field is then reset which is the expected result.
+- I choose a country, city and activities. Then I change the activities type. The map clears of all markers and new markers drop down for the new activity type. This is the expected result.
+- Activities: If no results exist for the user's combination of country, city and activity, the user should be alerted to this so that they can choose again. I selected a country, city and activity where no results would exist eg. South Africa + Kruger Park + Spas and Salons. Expected result: user is alerted that there are no results. Actual result: alert pops up informing me that there are no activities of this type for my chosen city and that I should select again. I then close the alert and can choose from the activities select field again.
+-	 When adding items to the itinerary - I tried to add an item without a date. When I click 'Add to itinerary' if the date field is blank an alert pops up to let me know I should select a date.
+- I tried adding an event with a date and the event was added to the itinerary, at the bottom of the lisst of events.
+- I try adding items to the itinerary until the content overflows the block. A scrollbar then appears.
+- I clicked the 'Delete' button to the right of the item and the entire item was removed from the itinerary section of the page.
 
 ### Issues/bugs
 
@@ -125,68 +186,6 @@ I found that when using the browser Safari, when the page was reloaded the form 
 The date on the Itinerary form was also not emptying when the page was refreshed, therefore I have added the resetItineraryForm() function to the buildIWContent() function to ensure the user sees a blank date field when they open the info window. 
 
 The resetItineraryForm() function is also added to the function that adds the object to the Itinerary, to clear the date field once a user has added an item to the itinerary.
-
-### Testing user stories 
-
-I tested each user story by clicking through each step to make sure I could find the information I need.
-
-1. As a user I should be able to select my country, city and activity to show the markers on the map for my search. I should then be able to click on markers on the map to show more information and from there choose a date and add the item to my itinerary. I should then be able to change the activity type in the drop-down activity field to show other places in the same city and in the same way as above, add items to my itinerary. I should be able to add many items to my itinerary and not be limited to a certain number.
-
-I tested this in the following way:
-1.1. I chose a country from the country field
-1.2. I started typing a city name in the city field and when the city I was looking for displayed in the options below the box I clicked on it to select it. I expected the map's view to change to show the city. When I selected the valid city the map panned and zoomed in to the city which is the expected result.
-1.3. From the activities drop-down I chose one activity. I expected the markers to drop down onto the map to show all the activities in my chosen category, and for a table under the map to show all the same activities with titles to allow for easier selection. The markers dropped down showing all activities in my chosen category and the results table populated below the map with the same results, showing titles for each.
-1.4. I clicked on a marker on the map, selected a date and clicked 'Add to itinerary'. I expected the event to be added to the itinerary. The event was added to the itinerary with the title of the place and the date I had chosen, plus a delete button. 
-1.5 I added a number of items until the list length was longer than the space allowed. I expected to be able to continue adding items and see a scroll bar appear so that I would be able to scroll through the items. The scroll bar did appear when the items overflowed and I was able to scroll through the list.
-1.6 I clicked the delete item belonging to an item. Expected result: item would be deleted from the list. Actual result: the item was deleted from the list, therefore the delete functionality is working.
-
-2. As a user who will be travelling to more than one place I should be able to select my country, city and activities and add items to my itinerary as in the user story 1. I should then be able to change my country and city, or change my city only and choose activity types again, and again add new items to the itinerary in addition to the ones that are already there.
-
-I tested this in the following way:
-
-2.1. I followed steps 1.1 to 1.6 above.
-2.2. I then choose a new country from the country select field. Expected result: the city field should clear, the map should pan and zoom to the new country, the activities select field should reset and the markers should be cleared from the map. Actual result: The city field clears, the map pans and zooms to the new country I have set, the activity field resets and the markers are cleared from the map.
-2.3. I type in the city field and choose a valid city from the autocomplete options shown. The map pans and zooms to the new city, as expected. 
-2.4. I choose my activity type. Expected result: map icons should drop onto map to show places with the activity types matching the activity type I chose, if places in my chosen activity type exist in the city I have chosen. Actual result: when places matching the activity type I have chosen exist in my chosen city map icons drop onto the map to show each one. When there are no places matching the activity type, an alert pops up informing me that there are no places to show and to pick another city.
-
-3. As a user who is looking for many different activity types I should be able to add items to my itinerary from many different activity types.
-3.1. I follow the steps 1.1 to 1.6 above.
-3.2. I then select a new activity from the activity field. Expected result: the markers from the previous activity choice should be cleared and markers for the new activity choice should appear on the map and results table. Actual result: markers from the previous activity are cleared and markers for the new activity type drop onto the map and populate the results table. Items in the itinerary do not clear which meets expectations as I want to add to the items already there.
-3.3. I now add items to the itinerary in the same way as step 1.4 above.
-
-### Responsive design
-
-- I have tested the website's design features and the functionality across devices and using Firefox developer tools.
-
-Devices I tested on:
-
-- Desktop - 950px wide and smaller (and real laptop and widescreen)
-- Tablets/iPads - 768px - 412px wide
-- Mobile phones - 411px - 360px wide (and a real iPhone 6)
-
-I tested on each device in the following way:
-
-- I opened the page and viewed the entire page to check that all features appeared as expected. 
-- There were many design bugs in the beginning of my development (working on resubmission) on mobile and I fixed each one that I could see, testing again on mobile after all fixes were applied. 
-- I accessed each feature, viewing the changes to the page on desktop and the selection of devices above. I checked that I could perform the actions needed on each device. All actions could be performed as expected.
-
-**Testing functionality:**
-
--	I ran manual tests on the functionality in this way:
--	Selecting a country and then trying to select an activity without first choosing a city. An alert now pops up to let me know that I need to select a city before choosing activities.
--	I began typing in the cities field without first choosing a country. An alert pops up to let me know I should select a country first before choosing a city.
-- I tried to choose an activity without first choosing a country and city. An alert pops up to let me know I should select a country and city before choosing an activity.
-- I entered data in the place & activities chooser form and then clicked the 'Reset' button and the form refreshed.
-- I entered data into the place & activities chooser form and then refreshed the browser. The form was cleared when the browser refreshed.
-- I entered invalid data into the city field and then tried to chose an activity. An alert pops up to tell me that the city is invalid.
-- I enter a country, then choose a city, then go back to the country and choose a different country. The city field is then reset which is the expected output.
-- I choose a country, city and activities. Then I change the activities type. The map clears of all markers and new markers drop down for the new activity type.
-- Activities: If no results exist for the user's combination of country, city and activity, the user should be alerted to this so that they can choose again. I selected a country, city and activity where no results would exist eg. South Africa + Kruger Park + Spas and Salons. Expected result: user is alerted that there are no results. Actual result: alert pops up informing me that there are no activities of this type for my chosen city and that I should select again. I then close the alert and can choose from the activities select field again.
--	 When adding items to the itinerary - I tried to add an item without a date. When I click 'Add to itinerary' if the date field is blank an alert pops up to let me know I should select a date.
-- I tried adding an event with a date and the event was added to the itinerary, at the bottom of the lisst of events.
-- I try adding items to the itinerary until the content overflows the block. A scrollbar then appears.
-- I clicked the 'Delete' button to the right of the item and the entire item was removed from the itinerary section of the page.
-
 
 ### Links
 
