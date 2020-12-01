@@ -51,51 +51,6 @@ In future developments I would like to include a distance slider to allow users 
 
 **Responsive design:** I have used Bootstrap’s grid layout to break the design down for smaller screens, ensuring content will be visible and easy to navigate on desktop, mobile and screen sizes in between.
 
-## Issues/bugs
-
-### Selecting only one out of three options on the main form
-
-In the first version of the site a user could try to type in the city input field and was not alerted to choose a country first. I have now added functionality that will alert a user if she tries to enter a city without first choosing a country. 
-
-It was also previously possible to select an activity type without first typing in a starting point (country and city). I have now fixed this by adding functionality that will alert the user if she tries to choose an activity before first choosing a city. 
-
-I have also added a focus function to the form functions to show the user which field she should be completing next.
-
-### Entering invalid data into the city field
-
-There was a bug where if you have already chosen a country you could enter invalid data into the city field and you would not be notified. I added a test to check if the place is undefined and if it is to alert the user to enter a valid city.
-
-There was still a bug after this that if you had already chosen a country and a valid city and then went back to re-enter data into the city field but entered invalid data, you would not be notified. This is because the place is already set on the map. In future deployments I will add a button after the city field that must be pressed to change the view to the city. On that button's action I can reset the view and add an if statement to check if the city is valid before panning and zooming to the city.
-
-### Content hidden below the fold
-
-- There was an issue that users may not see the results table and therefore not know it is there. I have added code to change the view once all fields in the form are set, if results are present, so that the user sees the map and top of the results table. [The idea was from here](http://jsfiddle.net/nick_craver/ntr5b/)
-
-### Looping causing additional items to be added to the itinerary
-I came across a bug that was resulting in extra items being added to the itinerary when the 'Add to itinerary'button was clicked on the second time or any time after that. It looked like the action was causing the code to loop through the first item before running through the current item and then adding the code for the previous and current items to the itinerary.
-
-This was fixed by moving the function to add the itinerary item out of the buildIWContent() function.
-
-### Reset
-
-I found that when using the browser Safari, when the page was reloaded the form would not be reset, it would contain the data set before the page was reloaded. I have therefore added the resetForm() to the body element to be run when the page loads. The for is now reset with the page loads.
-
-The date on the Itinerary form was also not emptying when the page was refreshed, therefore I have added the resetItineraryForm() function to the buildIWContent() function to ensure the user sees a blank date field when they open the info window. 
-
-The resetItineraryForm() function is also added to the function that adds the object to the Itinerary, to clear the date field once a user has added an item to the itinerary.
-
-### Itinerary
-
-The user can add the same entry to the itinerary twice. In future developments I would add a function that alerts the user when he is trying to add an entry if he has already added it.
-
-### Google maps autocomplete - invalid data input
-
-City input box: an autocomplete function sets the city bounds if a user selects a city within the country they have set. However, if a user enters invalid data, ie. text that is not equal to a city name within the country they have selected, the search for activities will not work. 
-
-[I have referred to Google documentation here](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch) to add the autocomplete with places search (on my site, this is activities). However, even in the Google documentation example it is possible for a user to enter invalid data without being alerted.
-
-I have tried to set an if statement based on the place.geometry argument, to alert the user if this is not true. However, this has not worked. This is an open bug but one that is open in the Google documentation example as well. 
-
 ## Features
 
 ### Existing Features
@@ -123,6 +78,53 @@ I have tried to set an if statement based on the place.geometry argument, to ale
 -	Google Maps API 
 
 ## Testing
+
+### Issues/bugs
+
+**Selecting only one out of three options on the main form**
+
+In the first version of the site a user could type in the city input field without first entering a country and was not alerted to choose a country first. I have now added functionality that will alert a user if she tries to enter a city without first choosing a country. 
+
+It was also previously possible to select an activity type without first typing in a starting point (country and city). I have now fixed this by adding functionality that will alert the user if she tries to choose an activity before first choosing a city. 
+
+I have also added a focus function to the form functions to show the user which field she should be completing next.
+
+**Entering invalid data into the city field**
+
+Previous version bug: if you had already chosen a country you could enter invalid data into the city field and you would not be notified. I added a test to check if the place is undefined and if it is to alert the user to enter a valid city.
+
+There was still a bug after this that if you had already chosen a country and a valid city and then went back to re-enter data into the city field but entered invalid data, you would not be notified. This is because the place is already set on the map. In future deployments I will add a button after the city field that must be pressed to change the view to the city. On that button's action I can reset the view and add an if statement to check if the city is valid before panning and zooming to the city.
+
+**Google maps autocomplete - invalid data input**
+
+City input box: an autocomplete function sets the city bounds if a user selects a valid city from the autocomplete options.
+
+I added a function that will check if the city is valid and if not, will alert the user to choose another city.
+
+However, if a user has previously chosen a valid city and then goes back to the city field and enters invalid data, they will not be alerted that the new data they have entered is invalid. I considered adding an onchange function to this box but it would have to evaluate at every keystroke and this would cause user issues. The other way to fix it would be to add a button that must be pressed to set the city and adding the autocomplete function to that so that the city is refreshed only when the button is pressed. I will add this in future developments. 
+
+For now, I think that the scenario described above is an edge case and is not affecting user experience to a degree that it needs to be fixed. In fact, in the Google documentation this is not dealt with: [I have referred to Google documentation here](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch).
+
+I have tried to set an if statement based on the place.geometry argument, to alert the user if this is not true. However, this has not worked. This is an open bug but one that is open in the Google documentation example as well. 
+
+
+**Content hidden below the fold**
+
+- There was an issue that users may not see the results table and therefore not know it is there. I have added code to change the view once all fields in the form are set, if results are present, so that the user sees the map and top of the results table. [The idea was from here](http://jsfiddle.net/nick_craver/ntr5b/)
+
+**Looping causing additional items to be added to the itinerary**
+
+I came across a bug that was resulting in extra items being added to the itinerary when the 'Add to itinerary'button was clicked on the second time or any time after that. It looked like the action was causing the code to loop through the first item before running through the current item and then adding the code for the previous and current items to the itinerary.
+
+This was fixed by moving the function to add the itinerary item out of the buildIWContent() function.
+
+**Reset**
+
+I found that when using the browser Safari, when the page was reloaded the form would not be reset, it would contain the data set before the page was reloaded. I have therefore added the resetForm() to the body element to be run when the page loads. The for is now reset with the page loads.
+
+The date on the Itinerary form was also not emptying when the page was refreshed, therefore I have added the resetItineraryForm() function to the buildIWContent() function to ensure the user sees a blank date field when they open the info window. 
+
+The resetItineraryForm() function is also added to the function that adds the object to the Itinerary, to clear the date field once a user has added an item to the itinerary.
 
 ### Testing user stories 
 
