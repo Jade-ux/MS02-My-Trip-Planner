@@ -1,6 +1,6 @@
 # Trip Planner
 
-[View my live site here.](https://jade-ux.github.io/MS02-My-Trip-Planner/)
+<!--[View my live site here.](https://jade-ux.github.io/MS02-My-Trip-Planner/)-->
 
 ## Table of contents
 
